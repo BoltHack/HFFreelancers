@@ -272,7 +272,10 @@ body {
         background-color: transparent;
     }
 }
-
+.favorites{
+    color: #f3d5b5;
+    text-align: center;
+}
 .lightTheme{
     .project{
         background-color: #fff;
@@ -293,6 +296,9 @@ body {
     }
     .center-advertising{
         color: #040505;
+    }
+    .favorites{
+        color: black;
     }
     background-color: #ECF1FD;
 }

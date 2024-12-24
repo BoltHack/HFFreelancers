@@ -61,9 +61,9 @@ document.addEventListener('DOMContentLoaded', function (){
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
-                const ip = data.ip
-                document.cookie = `ip=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
-                document.cookie = `ip=${encodeURIComponent(ip)}; max-age=${24 * 60 * 60}`;
+                const ip = data.ip;
+                // document.cookie = `ip=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+                // document.cookie = `ip=${encodeURIComponent(ip)}; max-age=${24 * 60 * 60}`;
 
                 fetch(`/auth/register/${ip}`, {
                     method: 'post',

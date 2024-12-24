@@ -61,8 +61,20 @@ main{
     height: 110%;
     background-image: url("../images/programming.jpg");
     /*background-color: #16171d;*/
+    /*background: linear-gradient(45deg, #8d0000, #44006b, #270164, #010433);*/
+    /*background-attachment: fixed;*/
+    /*background-size: 500%;*/
+    /*animation: backgroundAnimation 6s infinite ease;*/
     flex-wrap: wrap;
 }
+/*@keyframes backgroundAnimation {*/
+/*    0%, 100%{*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*    50%{*/
+/*        background-position: 100% 50%;*/
+/*    }*/
+/*}*/
 .info{
     position: absolute;
     top: 30%;
@@ -145,7 +157,8 @@ main{
     height: 180px;
     width: 400px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    /*border: 1px solid #313338;*/
     z-index: 1;
 }
 .our-data-color{
@@ -160,7 +173,8 @@ main{
     height: 180px;
     width: 400px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid #313338;
     transform: rotate(20deg);
 }
 .our-contact-color{

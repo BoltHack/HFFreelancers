@@ -278,7 +278,10 @@ body {
         background-color: transparent;
     }
 }
-
+.page-name{
+    color: #fff;
+    text-align: center;
+}
 .lightTheme{
     .project{
         background-color: #fff;
@@ -296,6 +299,9 @@ body {
     }
     .center-advertising{
         color: #040505;
+    }
+    .page-name{
+        color: black;
     }
     background-color: #ECF1FD;
 }
