@@ -124,7 +124,7 @@ main{
     background-color: #16171d;
     border: 1px solid #313338;
     border-radius: 10px;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 1);*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 .about-padding{
     padding: 20px 20px;
@@ -184,7 +184,7 @@ main{
 .our-contact-padding{
     padding: 20px 20px;
 }
-.our-email:hover{
+.our-email:hover, .our-phone:hover{
     color: #F2F2F2;
     text-decoration: underline;
 }
@@ -199,7 +199,7 @@ main{
     /*height: 430px;*/
     height: 550px;
     padding: 20px;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 1);*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 .services-container {
     margin: 0 auto;

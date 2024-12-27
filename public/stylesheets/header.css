@@ -21,7 +21,8 @@ html::-webkit-scrollbar-track {
 
 html {
     scrollbar-width: thin;
-    scrollbar-color: #212121 #16171d;
+    /*scrollbar-color: #212121 #16171d;*/
+    scrollbar-color: #212121 #313338;
 }
 
 html::-webkit-scrollbar-thumb:hover {
@@ -36,6 +37,7 @@ header{
     z-index: 2;
     transition: top 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
 }
 img {
     width: 60px;

@@ -103,6 +103,7 @@ body {
 .no-advertising {
     background-color: #16171d;
     border: 1px solid #313338;
+    border-radius: 10px;
     width: 800px;
     height: 85px;
     position: relative;
