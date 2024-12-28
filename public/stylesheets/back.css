@@ -1,14 +1,21 @@
 .back{
     position: absolute;
-    top: 12.5%;
+    /*margin-top: -10px;*/
+    /*max-width: 200px;*/
+    /*top: 12.5%;*/
+    top: 11.5%;
     left: 0;
     /*margin-left: 95px;*/
     padding: 12px;
     display: flex;
     gap: 5px;
+    background-color: #16171d;
 }
 .between{
-    color: rgba(98, 51, 185, 255);
+    /*color: rgba(98, 51, 185, 255);*/
+    /*color: #2f4550;*/
+    color: #586f7c;
+    z-index: 1;
 }
 .color-btn{
     /*color: #571089;*/
@@ -26,9 +33,6 @@
 }
 .lightTheme{
     .color-btn{
-        color: #0d49d7;
-    }
-    .other-color{
-        color: #2a2a2a;
+        color: #adb5bd;
     }
 }
