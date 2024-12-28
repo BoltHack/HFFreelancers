@@ -94,25 +94,25 @@
                 <a href="/rules">Правила использования</a>
                 <a href="/privacyPolicy">Политика конфиденциальности</a>
             </div>
+            <% if (links.length) { %>
             <div class="footer-contacts">
-                <% if (links) { %>
-                    <% links.forEach(linksItem => { %>
-                        <h3>Контакты</h3>
-                        <% if(linksItem.vk) {%>
-                            <a href="<%= linksItem.vk %>" target="_blank">VK</a>
+                <h3>Контакты</h3>
+                <% links.forEach(linksItem => { %>
+                    <% if(linksItem.vk) {%>
+                        <a href="<%= linksItem.vk %>" target="_blank">VK</a>
+                    <%}%>
+                        <% if(linksItem.discord) {%>
+                            <a href="<%= linksItem.discord %>" target="_blank">Discord</a>
                         <%}%>
-                            <% if(linksItem.discord) {%>
-                                <a href="<%= linksItem.discord %>" target="_blank">Discord</a>
-                            <%}%>
-                            <% if(linksItem.instagram) {%>
-                                <a href="<%= linksItem.instagram %>" target="_blank">instagram</a>
-                            <%}%>
-                            <% if(linksItem.facebook) {%>
-                                <a href="<%= linksItem.facebook %>" target="_blank">facebook</a>
-                            <%}%>
-                        <% }); %>
-                <%}%>
+                        <% if(linksItem.instagram) {%>
+                            <a href="<%= linksItem.instagram %>" target="_blank">instagram</a>
+                        <%}%>
+                        <% if(linksItem.facebook) {%>
+                            <a href="<%= linksItem.facebook %>" target="_blank">facebook</a>
+                        <%}%>
+                <% }); %>
             </div>
+            <%}%>
             <div class="contact-us">
                 <h3>Связь с нами</h3>
                 <a href="mailto:hffreelancers@gmail.com" style="color: #b7b4be">HFFreelancers@gmail.com</a>

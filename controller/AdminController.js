@@ -371,26 +371,12 @@ class AdminController {
 
     static sendLinksPostVk = async (req, res, next) => {
         try {
-            const linkElements = await LinksModel.find()
             const {vk} = req.body;
 
-            if (linkElements.length === 0) {
-                const newLinkElements = new LinksModel({vk});
-                await newLinkElements.save();
-                res.status(201).json({message: "Новый администратор добавлен", admin: newLinkElements});
-            } else {
-                const id = linkElements[0]._id;
-                const updatedAdmin = await LinksModel.findByIdAndUpdate(
-                    id,
-                    {vk},
-                    {new: true}
-                );
+            const updatedAdmin = await new LinksModel({ vk });
+            await updatedAdmin.save();
 
-                if (!updatedAdmin) {
-                    return res.status(404).json({message: "Администратор не найден"});
-                }
-                res.redirect('/admin/sendLinks');
-            }
+            res.redirect('/admin/sendLinks');
         } catch (err) {
             console.error('Ошибка:', err);
             res.status(500).json({error: err.message});
@@ -400,26 +386,12 @@ class AdminController {
 
     static sendLinksPostDiscord = async (req, res, next) => {
         try {
-            const linkElements = await LinksModel.find()
             const {discord} = req.body;
 
-            if (linkElements.length === 0) {
-                const newLinkElements = new LinksModel({discord});
-                await newLinkElements.save();
-                res.status(201).json({message: "Новый администратор добавлен", admin: newLinkElements});
-            } else {
-                const id = linkElements[0]._id;
-                const updatedAdmin = await LinksModel.findByIdAndUpdate(
-                    id,
-                    {discord},
-                    {new: true}
-                );
+            const updatedAdmin = await LinksModel({ discord });
+            await updatedAdmin.save();
 
-                if (!updatedAdmin) {
-                    return res.status(404).json({message: "Администратор не найден"});
-                }
-                res.redirect('/admin/sendLinks');
-            }
+            res.redirect('/admin/sendLinks');
         } catch (err) {
             console.error('Ошибка:', err);
             res.status(500).json({error: err.message});
@@ -429,26 +401,12 @@ class AdminController {
 
     static sendLinksPostInstagram = async (req, res, next) => {
         try {
-            const linkElements = await LinksModel.find()
             const {instagram} = req.body;
 
-            if (linkElements.length === 0) {
-                const newLinkElements = new LinksModel({instagram});
-                await newLinkElements.save();
-                res.status(201).json({message: "Новый администратор добавлен", admin: newLinkElements});
-            } else {
-                const id = linkElements[0]._id;
-                const updatedAdmin = await LinksModel.findByIdAndUpdate(
-                    id,
-                    {instagram},
-                    {new: true}
-                );
+            const updatedAdmin = await new LinksModel({ instagram });
+            await updatedAdmin.save();
 
-                if (!updatedAdmin) {
-                    return res.status(404).json({message: "Администратор не найден"});
-                }
-                res.redirect('/admin/sendLinks');
-            }
+            res.redirect('/admin/sendLinks');
         } catch (err) {
             console.error('Ошибка:', err);
             res.status(500).json({error: err.message});
@@ -458,26 +416,12 @@ class AdminController {
 
     static sendLinksPostFacebook = async (req, res, next) => {
         try {
-            const linkElements = await LinksModel.find()
             const {facebook} = req.body;
 
-            if (linkElements.length === 0) {
-                const newLinkElements = new LinksModel({facebook});
-                await newLinkElements.save();
-                res.status(201).json({message: "Новый администратор добавлен", admin: newLinkElements});
-            } else {
-                const id = linkElements[0]._id;
-                const updatedAdmin = await LinksModel.findByIdAndUpdate(
-                    id,
-                    {facebook},
-                    {new: true}
-                );
+            const updatedAdmin = await new LinksModel({ facebook });
+            await updatedAdmin.save();
 
-                if (!updatedAdmin) {
-                    return res.status(404).json({message: "Администратор не найден"});
-                }
-                res.redirect('/admin/sendLinks');
-            }
+            res.redirect('/admin/sendLinks');
         } catch (err) {
             console.error('Ошибка:', err);
             res.status(500).json({error: err.message});
@@ -485,80 +429,12 @@ class AdminController {
         }
     }
 
-    static deleteFacebookLink = async (req, res, next) => {
+    static deleteLink = async (req, res, next) => {
         try {
             const {id} = req.params;
 
-            await LinksModel.findByIdAndUpdate(id, {$unset: {facebook: ""}})
-                .then((user) => {
-                    if (!user) {
-                        return res.status(404).json({message: "Пользователь не найден"});
-                    }
-                    res.redirect('/admin/sendLinks');
-                })
-                .catch((error) => {
-                    res.status(500).json({error: error.message});
-                });
-        } catch (e) {
-            console.log(e);
-            next(e);
-        }
-    }
-
-    static deleteVkLink = async (req, res, next) => {
-        try {
-            const {id} = req.params;
-
-            await LinksModel.findByIdAndUpdate(id, {$unset: {vk: ""}})
-                .then((user) => {
-                    if (!user) {
-                        return res.status(404).json({message: "Пользователь не найден"});
-                    }
-                    res.redirect('/admin/sendLinks');
-                })
-                .catch((error) => {
-                    res.status(500).json({error: error.message});
-                });
-        } catch (e) {
-            console.log(e);
-            next(e);
-        }
-    }
-
-    static deleteDiscordLink = async (req, res, next) => {
-        try {
-            const {id} = req.params;
-
-            await LinksModel.findByIdAndUpdate(id, {$unset: {discord: ""}})
-                .then((user) => {
-                    if (!user) {
-                        return res.status(404).json({message: "Пользователь не найден"});
-                    }
-                    res.redirect('/admin/sendLinks');
-                })
-                .catch((error) => {
-                    res.status(500).json({error: error.message});
-                });
-        } catch (e) {
-            console.log(e);
-            next(e);
-        }
-    }
-
-    static deleteInstagramLink = async (req, res, next) => {
-        try {
-            const {id} = req.params;
-
-            await LinksModel.findByIdAndUpdate(id, {$unset: {instagram: ""}})
-                .then((user) => {
-                    if (!user) {
-                        return res.status(404).json({message: "Пользователь не найден"});
-                    }
-                    res.redirect('/admin/sendLinks');
-                })
-                .catch((error) => {
-                    res.status(500).json({error: error.message});
-                });
+            await LinksModel.findByIdAndDelete(id)
+            res.redirect('/admin/sendLinks');
         } catch (e) {
             console.log(e);
             next(e);

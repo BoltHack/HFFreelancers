@@ -21,7 +21,14 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
+        .section button{
+            /*justify-content: center;*/
+            /*align-items: center;*/
+            /*text-align: center;*/
+            position: absolute;
+            /*gap: 10px;*/
+            left: 65%;
+        }
         h2 {
             text-align: center;
             color: #333333;
@@ -91,6 +98,10 @@
         .del-button:hover {
             background-color: #0056b3;
         }
+        .section{
+            display: block;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -132,7 +143,7 @@
             <% links.forEach(linksItem => { %>
                 <div class="section">
                     <% if(linksItem.vk) {%>
-                        <form action="/admin/deleteVkLink/<%= linksItem.id %>" method="POST">
+                        <form action="/admin/deleteLink/<%= linksItem.id %>" method="POST">
                             <div style="display: flex; gap: 5px">
                                 <p>vk: <%= linksItem.vk %></p>
                                 <button class="del-button">Удалить</button>
@@ -140,7 +151,7 @@
                         </form>
                         <%}%>
                         <% if(linksItem.discord) {%>
-                            <form action="/admin/deleteDiscordLink/<%= linksItem.id %>" method="POST">
+                            <form action="/admin/deleteLink/<%= linksItem.id %>" method="POST">
                                 <div style="display: flex; gap: 5px">
                                     <p>discord: <%= linksItem.discord %></p>
                                     <button class="del-button">Удалить</button>
@@ -148,7 +159,7 @@
                             </form>
                         <%}%>
                         <% if(linksItem.instagram) {%>
-                            <form action="/admin/deleteInstagramLink/<%= linksItem.id %>" method="POST">
+                            <form action="/admin/deleteLink/<%= linksItem.id %>" method="POST">
                                 <div style="display: flex; gap: 5px">
                                     <p>instagram: <%= linksItem.instagram %></p>
                                     <button class="del-button">Удалить</button>
@@ -156,7 +167,7 @@
                             </form>
                         <%}%>
                         <% if(linksItem.facebook) {%>
-                        <form action="/admin/deleteFacebookLink/<%= linksItem.id %>" method="POST">
+                        <form action="/admin/deleteLink/<%= linksItem.id %>" method="POST">
                             <div style="display: flex; gap: 5px">
                                 <p>facebook: <%= linksItem.facebook %></p>
                                 <button class="del-button">Удалить</button>

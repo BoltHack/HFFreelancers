@@ -1,8 +1,7 @@
 const express = require('express');
 const {
     sendNewsAdmin, allUsersAdmin, deleteUserAdmin, changePasswordAdmin, sendNewsPost, allNewsAdmin,
-    deleteNewsAdmin, deleteReviewAdmin, sendLinksAdmin, deleteFacebookLink, deleteVkLink,
-    deleteDiscordLink, deleteInstagramLink, sendLinksPostVk, sendLinksPostDiscord, sendLinksPostInstagram,
+    deleteNewsAdmin, deleteReviewAdmin, sendLinksAdmin, deleteLink, sendLinksPostVk, sendLinksPostDiscord, sendLinksPostInstagram,
     sendLinksPostFacebook, playerBanAdmin, playerUnbanAdmin, requestUnbanAdmin, banMenuAdmin, banListAdmin,
     createAWebSiteAdmin, createAwebsite, allWebsitesAdmin, deleteFileAdmin, createAdvertisingAdmin, createAdvertisingPost,
     allAdvertisingAdmin, deleteAdvertising, banIpListAdmin, playerUnbanIpAdmin
@@ -39,10 +38,8 @@ router.post('/sendLinksDiscord', verifyPermissions('Admin'), sendLinksPostDiscor
 router.post('/sendLinksInstagram', verifyPermissions('Admin'), sendLinksPostInstagram);
 router.post('/sendLinksFacebook', verifyPermissions('Admin'), sendLinksPostFacebook);
 
-router.post('/deleteFacebookLink/:id', verifyPermissions('Admin'), deleteFacebookLink);
-router.post('/deleteVkLink/:id', verifyPermissions('Admin'), deleteVkLink);
-router.post('/deleteDiscordLink/:id', verifyPermissions('Admin'), deleteDiscordLink);
-router.post('/deleteInstagramLink/:id', verifyPermissions('Admin'), deleteInstagramLink);
+router.post('/deleteLink/:id', verifyPermissions('Admin'), deleteLink);
+
 router.post('/playerBan/:id', verifyPermissions('Admin'), playerBanAdmin);
 router.post('/playerUnban/:id', verifyPermissions('Admin'), playerUnbanAdmin);
 router.post('/playerUnbanIp/:id/:ip', verifyPermissions('Admin'), playerUnbanIpAdmin);

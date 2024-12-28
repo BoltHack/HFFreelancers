@@ -95,10 +95,10 @@
                 <a href="/rules">Terms of Use</a>
                 <a href="/privacyPolicy">Privacy Policy</a>
             </div>
-            <div class="footer-contacts">
-                <% if (links) { %>
+            <% if (links.length) { %>
+                <div class="footer-contacts">
+                    <h3>Contacts</h3>
                     <% links.forEach(linksItem => { %>
-                        <h3>Contacts</h3>
                         <% if(linksItem.vk) {%>
                             <a href="<%= linksItem.vk %>" target="_blank">VK</a>
                         <%}%>
@@ -106,14 +106,14 @@
                             <a href="<%= linksItem.discord %>" target="_blank">Discord</a>
                         <%}%>
                         <% if(linksItem.instagram) {%>
-                            <a href="<%= linksItem.instagram %>" target="_blank">Instagram</a>
+                            <a href="<%= linksItem.instagram %>" target="_blank">instagram</a>
                         <%}%>
                         <% if(linksItem.facebook) {%>
-                            <a href="<%= linksItem.facebook %>" target="_blank">Facebook</a>
+                            <a href="<%= linksItem.facebook %>" target="_blank">facebook</a>
                         <%}%>
                     <% }); %>
-                <%}%>
-            </div>
+                </div>
+            <%}%>
             <div class="contact-us">
                 <h3>Contact us</h3>
                 <a href="mailto:hffreelancers@gmail.com" style="color: #b7b4be">HFFreelancers@gmail.com</a>

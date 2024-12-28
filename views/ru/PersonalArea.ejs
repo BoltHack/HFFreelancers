@@ -207,10 +207,10 @@
     <p>Оставьте ссылки на свои социальные сети или YouTube-канал, чтобы другие пользователи могли убедиться, что ваш отзыв настоящий.</p>
     <form action="/sendContacts/<%= user.id %>" method="POST" class="contact-form">
         <label for="youtube">YouTube:</label>
-        <input type="url" id="youtube" name="youtube" placeholder="https://youtube.com/ваш_канал" >
+        <input type="url" id="youtube" name="youtube" placeholder="https://youtube.com/ваш_канал" required>
 
         <label for="vk">ВКонтакте:</label>
-        <input type="url" id="vk" name="vk" placeholder="https://vk.com/ваша_страница">
+        <input type="url" id="vk" name="vk" placeholder="https://vk.com/ваша_страница" required>
 
 <!--        <label for="other">Другие контакты:</label>-->
 <!--        <input type="url" id="other" name="other" placeholder="Например, Instagram или Telegram">-->

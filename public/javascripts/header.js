@@ -195,7 +195,7 @@ function pages() {
         case '/readyMadeSites/html-css-js':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a href="/readyMadeSites" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">html css js</a>`
             break;
@@ -203,7 +203,7 @@ function pages() {
         case '/readyMadeSites/javascript':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a href="/readyMadeSites" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Javascript</a>`
             break;
@@ -211,7 +211,7 @@ function pages() {
         case '/readyMadeSites/reactJs':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a href="/readyMadeSites" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">React js</a>`
             break;
@@ -219,7 +219,7 @@ function pages() {
         case '/readyMadeSites/nodeJs':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a href="/readyMadeSites" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Node js</a>`
             break;
@@ -227,7 +227,7 @@ function pages() {
         case '/readyMadeSites/fullstack':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a href="/readyMadeSites" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Fullstack</a>`
             break;
@@ -235,9 +235,17 @@ function pages() {
         case '/readyMadeSites/favorites':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a href="/readyMadeSites" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Избранное' : 'Favorites'}</a>`
+            break;
+
+        case `/fileInfo/${infoId}`:
+            pageName.innerHTML = `
+<a class="between"> > </a>
+<a class="other-color">${infoTitle}</a>
+<a class="between"> > </a>
+<a href="#" class="back-button color-btn" onclick="goBack()">${local === 'ru' ? 'Назад' : 'Back'}</a>`
             break;
 
         default:

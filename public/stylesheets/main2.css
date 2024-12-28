@@ -326,7 +326,6 @@ ul {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .moreReviews:hover {
@@ -422,12 +421,9 @@ ul {
         display: block;
         margin-right: 1000px;
     }
-    /*.content{*/
-    /*    max-width: 300px;*/
-    /*    position: relative;*/
-    /*    left: 50%;*/
-    /*    transform: translate(-50%);*/ /*
-    }*/
+    .theme{
+        margin-left: 100px;
+    }
     .about-container{
         max-width: 800px;
     }

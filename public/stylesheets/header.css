@@ -411,6 +411,7 @@ html.lightTheme {
 .color-btn{
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 .color-btn:hover{
     text-decoration: underline;
