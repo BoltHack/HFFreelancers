@@ -42,7 +42,7 @@
     <br>
 <!--    <h2 class="favorites">Избранное</h2>-->
     <div id="favorites-container">
-        <ul class="ul">
+        <ul class="ul" id="ul">
             <% if (favorites && favorites.length > 0) { %>
                 <% favorites.forEach(favorite => { %>
                     <li class="project" id="fav-container-<%= favorite._id %>">

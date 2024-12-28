@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Готовые Сайты | Избранное</title>
+    <title>Ready-Made Sites | Favorites</title>
     <link rel="stylesheet" href="/stylesheets/favorites.css">
     <link rel="icon" type="image/png" href="/images/logo2.png">
 </head>
@@ -35,14 +35,14 @@
             <% } %>
         <% } else { %>
             <div class="no-advertising">
-                <p class="center-advertising">Your advertisement could be here!</p>
+                <p class="center-advertising">Your advertisement can be here!</p>
             </div>
         <% } %>
     </div>
     <br>
-<!--    <h2 class="favorites">Favorites</h2>-->
+    <!--    <h2 class="favorites">Favorites</h2>-->
     <div id="favorites-container">
-        <ul class="ul">
+        <ul class="ul" id="ul">
             <% if (favorites && favorites.length > 0) { %>
                 <% favorites.forEach(favorite => { %>
                     <li class="project" id="fav-container-<%= favorite._id %>">
@@ -87,7 +87,7 @@
                     </li>
                 <% }); %>
             <% } else { %>
-                <li class="not-found">No favorites.</li>
+                <li class="not-found">No favorite items.</li>
             <% } %>
         </ul>
     </div>

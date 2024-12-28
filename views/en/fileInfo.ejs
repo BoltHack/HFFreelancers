@@ -98,51 +98,7 @@
     </div>
     <div class="br"></div>
 </main>
-<footer id="footerSection">
-<div class="footer-container">
-    <div class="footer-links">
-        <div class="footer-our-company">
-            <div style="display: flex">
-                <img src="../images/logo2.png" class="company-logo">
-                <h3 style="margin: 5px 10px;">HFFreelance</h3>
-            </div>
-            <p>Creating modern websites to generate new income sources, change careers, or advance professionally.</p>
-        </div>
-        <div class="footer-info">
-            <h3>Information</h3>
-            <a href="/aboutUs">About Us</a>
-            <a href="/rules">Terms of Use</a>
-            <a href="/privacyPolicy">Privacy Policy</a>
-        </div>
-        <div class="footer-contacts">
-            <% if (links) { %>
-                <% links.forEach(linksItem => { %>
-                    <h3>Contacts</h3>
-                    <% if(linksItem.vk) {%>
-                        <a href="<%= linksItem.vk %>" target="_blank">VK</a>
-                    <%}%>
-                    <% if(linksItem.discord) {%>
-                        <a href="<%= linksItem.discord %>" target="_blank">Discord</a>
-                    <%}%>
-                    <% if(linksItem.instagram) {%>
-                        <a href="<%= linksItem.instagram %>" target="_blank">instagram</a>
-                    <%}%>
-                    <% if(linksItem.facebook) {%>
-                        <a href="<%= linksItem.facebook %>" target="_blank">facebook</a>
-                    <%}%>
-                <% }); %>
-            <%}%>
-        </div>
-        <div class="contact-us">
-            <h3>Our address</h3>
-            <a href="mailto:типаемейл" style="color: #b7b4be">HFFreelancers@gmail.com</a>
-            <a href="tel:циферки" style="color: #b7b4be">+7 123 456 78 90</a>
-        </div>
-    </div>
-    <div class="footer-line"></div>
-    <p class="company-name">&copy; 2024 HFFreelance. All rights reserved. Full or partial copying of the site is prohibited.</p>
-</div>
-</footer>
+<%- include('footer.ejs') %>
 <script src="/javascripts/advertising.js"></script>
 <script src="/javascripts/love.js"></script>
 <script src="/javascripts/fileInfo/fileInfoEN.js"></script>

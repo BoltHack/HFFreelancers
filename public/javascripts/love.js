@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const deleteFav = document.getElementById('deleteFav-'+deleteId);
             const favContainer = document.getElementById('fav-container-'+deleteId);
             const load = document.getElementById('load-'+deleteId);
+            const local = localStorage.getItem('local');
 
             deleteFav.hidden = true;
             load.hidden = false;
@@ -199,6 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                     favContainer.style.display = 'none';
                                     const message = local === 'ru' ? `${deleteName} успешно удалён из избранного!`: `${deleteName} has been successfully removed from favorites!`;
                                     successMenu(message);
+
+                                    const fav = localStorage.getItem('favorites');
+                                    const ul = document.getElementById('ul');
+                                    if (fav === '[]'){
+                                        ul.innerHTML = `<li class="not-found">${local === 'ru' ? 'Нет избранных элементов.' : 'No favorite items.'}</li>`;
+                                    }
                                 }
                             })
                             .catch(error => {

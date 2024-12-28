@@ -10,6 +10,8 @@
     display: flex;
     gap: 5px;
     background-color: #16171d;
+    /*border: 1px solid #313338;*/
+    border-radius: 0 0 10px 0 / 0 0 10px 0;
 }
 .between{
     /*color: rgba(98, 51, 185, 255);*/
