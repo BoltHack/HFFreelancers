@@ -1,5 +1,6 @@
+let userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+let homeId = userInfo.id;
 function localsFRu() {
-    const homeId = localStorage.getItem('id');
     const token = localStorage.getItem('token');
     const url = token ? `/changeLocalAuth/${homeId}/ru` : '/changeLocal/ru';
     fetch(url, {
@@ -27,7 +28,6 @@ function localsFRu() {
 }
 
 function localsFEn() {
-    const homeId = localStorage.getItem('id');
     const token = localStorage.getItem('token');
     const url = token ? `/changeLocalAuth/${homeId}/en` : '/changeLocal/en';
     fetch(url, {
@@ -93,7 +93,6 @@ function checkIp() {
 
 function cookiesMenus() {
     const border = document.createElement('border');
-
     const local = localStorage.getItem('local');
 
     if (local === 'en'){

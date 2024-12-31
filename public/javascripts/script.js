@@ -218,13 +218,13 @@ function moreDetails() {
 }
 
 function weHaveAnAccount(){
-    const name = localStorage.getItem('name');
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
     const account = document.getElementById('account');
     const accountImg = document.getElementById('account-img');
-    if (name) {
+    if (userInfo.name) {
         account.style.display = 'none'
         account.hidden = true
-        const img = localStorage.getItem('profileImage');
+        const img = userInfo.profileImage;
         accountImg.src = img;
         accountImg.hidden = false
     }

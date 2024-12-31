@@ -95,7 +95,7 @@ main{
 }
 .info p {
     color: #21f0df;
-    font-weight:1000;
+    font-weight: 1000;
     font-size: 22px;
     /*background: rgb(104,65,162);*/
     /*background: linear-gradient(144deg, rgba(104,65,162,1) -42%, rgba(121,71,173,1) 100%);*/
@@ -420,9 +420,6 @@ ul {
     .moreReviews{
         display: block;
         margin-right: 1000px;
-    }
-    .theme{
-        margin-left: 100px;
     }
     .about-container{
         max-width: 800px;

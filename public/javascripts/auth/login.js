@@ -78,11 +78,9 @@ document.addEventListener('DOMContentLoaded', function (){
                             email.style.border = '1px solid #0d2818';
                             pwd.style.border = '1px solid #0d2818';
                             localStorage.setItem('token', token);
-                            localStorage.setItem('name', user.name);
-                            localStorage.setItem('id', user._id);
-                            localStorage.setItem('profileImage', 'data:image/png;base64,' + user.image);
                             localStorage.setItem('ref', 'refMain');
                             localStorage.setItem('favorites', JSON.stringify(user.favorites));
+                            localStorage.setItem('userInfo', JSON.stringify({ 'id': user._id, 'name': user.name, 'profileImage': 'data:image/png;base64,' + user.image }));
                             const checkbox = document.getElementById('rememberMeCheckbox');
                             if (checkbox.checked){
                                 localStorage.setItem('session', 'true');

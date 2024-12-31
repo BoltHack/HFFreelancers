@@ -875,6 +875,23 @@ class IndexController {
             next(err);
         }
     }
+
+    static getData = async (req, res, next) => {
+        try {
+            if (req.cookies['token']) {
+                await authenticateJWT(req, res, async () => {
+                    const user = req.user;
+                    const getImage = await UsersModel.findById({ _id: user.id });
+                    const image =  getImage.image;
+                    res.json({user, image});
+                });
+            }
+        }catch (err){
+            console.error('Ошибка:', err);
+            res.status(500).json({error: err.message});
+            next(err);
+        }
+    }
 }
 
 module.exports = IndexController;

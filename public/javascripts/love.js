@@ -240,7 +240,10 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInfo.forEach(button => {
         button.addEventListener('click', function () {
             const dataInfo = this.getAttribute('data-info');
-            localStorage.setItem('fileInfo', dataInfo);
+            const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
+            userInfo.fileInfo = dataInfo;
+            localStorage.setItem('userInfo', JSON.stringify(userInfo));
             window.location.href = `/fileInfo/${dataInfo}`;
         })
     })

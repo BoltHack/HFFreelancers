@@ -421,3 +421,8 @@ html.lightTheme {
         color: #0d49d7;
     }
 }
+@media (max-width: 1500px){
+    .theme{
+        margin-left: 100px;
+    }
+}

@@ -39,10 +39,10 @@ function ha() {
 }
 ha();
 
-const section = document.getElementById('headerSection');
-const back = document.getElementById('back');
-const types = document.getElementById('types');
 function header(){
+    const section = document.getElementById('headerSection');
+    const back = document.getElementById('back');
+    const types = document.getElementById('types');
     if (window.location.pathname === '/'){
         section.hidden = false;
         types.hidden = true;
@@ -127,20 +127,12 @@ function local(){
 }
 local()
 
-function goBack() {
-    const id = localStorage.getItem('id');
-    if (window.location.pathname === `/sendReviews/${id}` || window.location.pathname === '/PersonalArea') {
-        window.history.back();
-        window.history.back();
-    } else {
-        window.history.back();
-    }
-}
-
 function pages() {
     const pageName = document.getElementById('pageName');
     const page = window.location.pathname;
     const local = localStorage.getItem('local');
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
     switch (page) {
         case '/moreDetails':
             pageName.innerHTML = `
@@ -240,12 +232,12 @@ function pages() {
 <a class="other-color">${local === 'ru' ? 'Избранное' : 'Favorites'}</a>`
             break;
 
-        case `/fileInfo/${infoId}`:
+        case `/fileInfo/${userInfo.fileInfo}`:
             pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${infoTitle}</a>
 <a class="between"> > </a>
-<a href="#" class="back-button color-btn" onclick="goBack()">${local === 'ru' ? 'Назад' : 'Back'}</a>`
+<a href="#" class="back-button color-btn" onclick="window.history.back();">${local === 'ru' ? 'Назад' : 'Back'}</a>`
             break;
 
         default:

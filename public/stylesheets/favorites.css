@@ -301,5 +301,9 @@ body {
     .favorites{
         color: black;
     }
+    .delete-favorites:hover{
+        background-color: #761c19;
+        color: white;
+    }
     background-color: #ECF1FD;
 }
