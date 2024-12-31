@@ -1,9 +1,3 @@
-const login = () => {
-    window.location.href = `/auth/login`
-}
-const register = () => {
-    window.location.href = `/auth/register`
-}
 document.getElementById('account').addEventListener('click', () => {
     displayInfo();
 });
@@ -69,25 +63,7 @@ function displayInfo() {
             })
 }
 
-function PersonalAreaJoin() {
-    localStorage.setItem('ref', 'refPersonalArea');
-    window.location.href = '/accessToken';
-}
 
-function sendReviewsJoin() {
-    localStorage.setItem('ref', 'refSendReviews');
-    window.location.href = '/accessToken';
-}
-
-function allReviewsJoin() {
-    localStorage.setItem('ref', 'refAllReviews');
-    window.location.href = '/accessToken';
-}
-
-function admin() {
-    localStorage.setItem('ref', 'refAdmin');
-    window.location.href = '/accessToken';
-}
 
 function logoutMenu() {
     const barrier = document.createElement('barrier');
@@ -213,10 +189,6 @@ function checkTokenFunc() {
 
 }
 
-function moreDetails() {
-    window.location.href = '/moreDetails'
-}
-
 function weHaveAnAccount(){
     const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
     const account = document.getElementById('account');
@@ -229,7 +201,6 @@ function weHaveAnAccount(){
         accountImg.hidden = false
     }
     else{
-        // account.textContent = 'Мой аккаунт'
         accountImg.hidden = true;
     }
 }

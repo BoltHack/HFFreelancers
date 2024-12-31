@@ -149,7 +149,7 @@ function pages() {
         case '/sendReviews':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a href="/allReviews" class="color-btn">${local === 'ru' ? 'Все отзывы' : 'All reviews'}</a>
+<a onclick="allReviewsJoin();" class="color-btn">${local === 'ru' ? 'Все отзывы' : 'All reviews'}</a>
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Оставить отзыв' : 'Send review'}</a>`
             break;
@@ -187,7 +187,7 @@ function pages() {
         case '/readyMadeSites/html-css-js':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">html css js</a>`
             break;
@@ -195,7 +195,7 @@ function pages() {
         case '/readyMadeSites/javascript':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Javascript</a>`
             break;
@@ -203,7 +203,7 @@ function pages() {
         case '/readyMadeSites/reactJs':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">React js</a>`
             break;
@@ -211,7 +211,7 @@ function pages() {
         case '/readyMadeSites/nodeJs':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Node js</a>`
             break;
@@ -219,7 +219,7 @@ function pages() {
         case '/readyMadeSites/fullstack':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Fullstack</a>`
             break;
@@ -227,7 +227,7 @@ function pages() {
         case '/readyMadeSites/favorites':
             pageName.innerHTML = `
 <a class="between"> > </a>
-<a onclick="allSites()" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
+<a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Избранное' : 'Favorites'}</a>`
             break;
@@ -246,3 +246,34 @@ function pages() {
     }
 }
 pages();
+
+const login = () => {
+    window.location.href = `/auth/login`
+}
+const register = () => {
+    window.location.href = `/auth/register`
+}
+
+function PersonalAreaJoin() {
+    localStorage.setItem('ref', 'refPersonalArea');
+    window.location.href = '/accessToken';
+}
+
+function sendReviewsJoin() {
+    localStorage.setItem('ref', 'refSendReviews');
+    window.location.href = '/accessToken';
+}
+
+function allReviewsJoin() {
+    localStorage.setItem('ref', 'refAllReviews');
+    window.location.href = '/accessToken';
+}
+
+function moreDetails() {
+    window.location.href = '/moreDetails'
+}
+
+function admin() {
+    localStorage.setItem('ref', 'refAdmin');
+    window.location.href = '/accessToken';
+}

@@ -223,8 +223,8 @@
 <script src="/javascripts/script.js"></script>
 <script>
     const userImageEdit = document.getElementById('userImageEdit');
-    const img = localStorage.getItem('profileImage');
-    userImageEdit.src = img;
+    let img = JSON.parse(localStorage.getItem('userInfo') || '{}');
+    userImageEdit.src = img.profileImage;
 </script>
 </body>
 </html>

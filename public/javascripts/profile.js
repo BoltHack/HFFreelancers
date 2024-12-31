@@ -41,6 +41,7 @@ function profilePerms(){
     let changePassword = document.getElementById('changePassword');
     let zoomImage = document.getElementById('zoomImage');
     let zoomImageDiv = document.getElementById('zoomImageDiv');
+    let userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
 
     const barrier = document.createElement('barrier');
 
@@ -68,14 +69,16 @@ function profilePerms(){
         editImagePart.hidden = true;
         changePassword.hidden = true;
         zoomImageDiv.hidden = true;
-        localStorage.setItem('profileImage', `data:image/png;base64,${imageUser}`);
+        userInfo.profileImage = `data:image/png;base64,${imageUser}`
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
     })
 
     cancelChangeBtn.addEventListener('click', () => {
         editImageBtn.hidden = false;
         editImagePart.hidden = true;
         document.body.removeChild(barrier);
-        localStorage.setItem('profileImage', `data:image/png;base64,${imageUser}`);
+        userInfo.profileImage = `data:image/png;base64,${imageUser}`
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
     })
 
     attachFile.addEventListener('change', () => {
@@ -86,7 +89,9 @@ function profilePerms(){
         reader.readAsDataURL(attachFile.files[0]);
         reader.onload = function () {
             const imageDataUrl = reader.result;
-            localStorage.setItem('profileImage', imageDataUrl);
+            // localStorage.setItem('profileImage', imageDataUrl);
+            userInfo.profileImage = imageDataUrl
+            localStorage.setItem('userInfo', JSON.stringify(userInfo));
         };
     })
 
