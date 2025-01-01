@@ -4,6 +4,7 @@ async function allPaths() {
         '/': 'refMain',
         '/moreDetails': 'refMoreDetails',
         '/allReviews': 'refAllReviews',
+        '/sendReviews': 'refSendReviews',
         '/aboutUs': 'refAboutUs',
         '/rules': 'refRules',
         '/privacyPolicy': 'refPrivacyPolicy',

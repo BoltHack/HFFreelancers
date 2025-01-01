@@ -244,7 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             userInfo.fileInfo = dataInfo;
             localStorage.setItem('userInfo', JSON.stringify(userInfo));
-            window.location.href = `/fileInfo/${dataInfo}`;
+            localStorage.setItem('ref', 'refFileInfo');
+            window.location.href = '/accessToken';
+            // window.location.href = `/fileInfo/${dataInfo}`;
         })
     })
 });

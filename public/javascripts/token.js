@@ -1,4 +1,4 @@
-const homeId = localStorage.getItem('id');
+const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
 const ref = localStorage.getItem('ref');
 async function getNewToken() {
     try {
@@ -77,6 +77,9 @@ function refs(){
     }
     else if(ref === 'refAllReviews'){
         window.location.href = `/allReviews`;
+    }
+    else if(ref === 'refFileInfo'){
+        window.location.href = `/fileInfo/${userInfo.fileInfo}`;
     }
 }
 refs();
