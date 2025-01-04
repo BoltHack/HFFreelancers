@@ -1,0 +1,101 @@
+[33mcommit 26ea3582db4fd0e6d2317b66788bcf37184d00e4[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: mrlyov <vpoghosyan>
+Date:   Sat Jan 4 19:21:53 2025 +0400
+
+    test
+
+[33mcommit c4bc93e1b5ec61c81fe628e182a7464c8c0c5aec[m
+Author: mrlyov <vpoghosyan>
+Date:   Sat Jan 4 19:15:02 2025 +0400
+
+    Remove .env from repository
+
+[33mcommit 56f20b7d6bf221293caa9dc80913ac3f980d8fd1[m
+Author: mrlyov <vpoghosyan>
+Date:   Sat Dec 7 11:02:29 2024 +0400
+
+    test
+
+[33mcommit f7331d4b02b76745080bfc61b713c79093bd40f2[m
+Author: mrlyov <vpoghosyan>
+Date:   Sat Dec 7 11:01:50 2024 +0400
+
+    test
+
+[33mcommit 366d54d14e8025b788a2ceae2323b96ad9a59969[m
+Author: mrlyov <vpoghosyan>
+Date:   Fri Oct 25 11:25:23 2024 +0400
+
+    А авторизации добавлены функции запомнить меня и забыл пароль
+
+[33mcommit e25bd91add715f01231216a4759c3a83f9769e5e[m
+Author: mrlyov <vpoghosyan>
+Date:   Tue Oct 1 12:47:40 2024 +0400
+
+    test
+
+[33mcommit 38248ecccd8271271ba7cc4a6f4c4b1a7e801034[m
+Author: mrlyov <vpoghosyan>
+Date:   Wed Sep 18 15:14:26 2024 +0400
+
+    Добавлена функция коммениариев для каждого сайта
+
+[33mcommit 3d1c51958afc0801cb7121c22c69b446781bd460[m
+Author: mrlyov <vpoghosyan>
+Date:   Thu Aug 8 21:58:05 2024 +0400
+
+    Был исправлен бал с ref
+
+[33mcommit 61dd22060d061da006514196b2da8c8c73a0ca68[m
+Author: BoltHack <156070911+BoltHack@users.noreply.github.com>
+Date:   Tue Aug 6 21:33:50 2024 +0400
+
+    Update .env
+
+[33mcommit a3c3225d912a75703c8e674c432923b16e9f6361[m
+Author: mrlyov <vpoghosyan>
+Date:   Tue Aug 6 21:33:02 2024 +0400
+
+    Изменено оформление профиля
+
+[33mcommit 0150abbfcf837bca2634d7dbfca5375cacb383fa[m
+Author: mrlyov <vpoghosyan>
+Date:   Thu Aug 1 22:31:22 2024 +0400
+
+    Были исправлены баги с избранными и с готовыми сайтами
+
+[33mcommit d0f9cefd8a9de408e3d016ed334e3e160e27f1ec[m
+Author: BoltHack <156070911+BoltHack@users.noreply.github.com>
+Date:   Wed Jul 31 22:23:17 2024 +0400
+
+    Update .env
+
+[33mcommit 1d0eb2801697a52b6cf2216aa25e870ba2003d38[m
+Author: mrlyov <vpoghosyan>
+Date:   Wed Jul 31 22:22:49 2024 +0400
+
+    Изменены кнопки для скачивания
+
+[33mcommit c964d12d6be02038cfb0ee71d40ec16b1b6e562a[m
+Author: mrlyov <vpoghosyan>
+Date:   Wed Jul 17 16:10:00 2024 +0400
+
+    HFFreelance
+
+[33mcommit fd79694e63e82df39becf27b2b26a12dfe2d0c76[m
+Author: mrlyov <vpoghosyan>
+Date:   Tue Jul 16 11:57:40 2024 +0400
+
+    HFFreelance-v2
+
+[33mcommit e2ba84164ef69f2b391063a8d36a2e894365c334[m
+Author: mrlyov <vpoghosyan>
+Date:   Fri Jul 12 14:51:41 2024 +0400
+
+    HFFreelance
+
+[33mcommit d7d2a395ae13c4269d9e3b661aeeec6551a3be33[m
+Author: mrlyov <vpoghosyan>
+Date:   Wed Jun 19 23:26:16 2024 +0400
+
+    HFFreelance
