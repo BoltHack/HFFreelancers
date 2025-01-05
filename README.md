@@ -10,17 +10,17 @@
 ---
 
 ### 2. Настройка файла `.env`
-Найдите файл `.env` в корневой папке проекта и добавьте в него следующие переменные окружения:
+Создайте файл `.env` в корневой папке проекта и добавьте в него следующие переменные окружения:
 
 `env`:
 ```
 MONGODB_URL=Ваша строка подключения к базе данных MongoDB.
-JWTSecret=kkgjdhfgdfkgbhdfbgdfhg156g46fg
-refreshTokenSecret=hlndfghfdh5gf5h65gitgfh+65gf6h1gf65gf1f4gh1gf1h981gf91gf98h1gf98h1g56fg6h1fg
+JWTSecret=Можете писать тут любые символы. Например: kkgjdhfgdfkgbhdfbgdfhg156g46fg
+refreshTokenSecret=Можете писать тут любые символы. Например: hlndfghfdh5gf5h65gitgfh+65gf6h1gf65gf1f4gh1gf1h981gf91gf98h1gf98h1g56fg6h1fg
 USER=Электронная почта, которая будет использоваться для отправки кодов восстановления аккаунтов пользователям.
 PASS=Пароль приложения для указанного адреса электронной почты.
 ```
-JWTSecret и refreshTokenSecret - это токены безопасности. Их менять не надо. Они уже настроены.
+JWTSecret и refreshTokenSecret - это токены безопасности.
 
 ---
 
