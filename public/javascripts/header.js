@@ -243,13 +243,6 @@ function pages() {
 }
 pages();
 
-const login = () => {
-    window.location.href = `/auth/login`
-}
-const register = () => {
-    window.location.href = `/auth/register`
-}
-
 function PersonalAreaJoin() {
     localStorage.setItem('ref', 'refPersonalArea');
     window.location.href = '/accessToken';

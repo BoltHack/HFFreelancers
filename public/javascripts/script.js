@@ -1,3 +1,9 @@
+const login = () => {
+    window.location.href = `/auth/login`
+}
+const register = () => {
+    window.location.href = `/auth/register`
+}
 document.getElementById('account').addEventListener('click', () => {
     displayInfo();
 });

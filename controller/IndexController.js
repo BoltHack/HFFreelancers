@@ -860,12 +860,16 @@ class IndexController {
             const {youtube, vk} = req.body;
 
             const user = await UsersModel.findById(id);
+            let locale = req.cookies['locale'] || 'en';
 
-            const existingContacts = user.contacts && user.contacts[0] ? user.contacts[0] : {};
+           if (youtube === "" && vk === ""){
+               const errorMsg = locale === 'en' ? 'Please fill out all fields.' : 'Пожалуйста, заполните все поля.'
+               return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+           }
 
             await UsersModel.findByIdAndUpdate(
                 id,
-                { $set: { contacts } },
+                { $set: { contacts: {youtube, vk} } },
                 { new: true }
             );
             return res.redirect('/PersonalArea');

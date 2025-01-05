@@ -4,149 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HFFreelancers | Error</title>
+    <link rel="stylesheet" href="/stylesheets/error.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="icon" type="image/png" href="/images/logo2.png">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #212121;
-            /*background-color: #dadde2;*/
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        .error-box {
-            background-color: #16171d;
-            border: 1px solid #313338;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            min-width: 300px;
-            max-width: 500px;
-            margin: 0 auto;
-            word-wrap: break-word;
-        }
-
-        h2{
-            color: #761c19;
-        }
-        .error-box h4 {
-            /*color: #d9534f;*/
-            color: #ECF1FD;
-        }
-
-        .error-box pre {
-            background-color: #f8f8f8;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-
-        .home-link {
-            display: inline-block;
-            width: 100%;
-            padding: 10px 0;
-            background-color: #283618;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .home-link:hover {
-            background-color: #4cae4c;
-        }
-
-        .theme{
-            position: absolute;
-            top: 5%;
-            left: 1%;
-            transform: translate(0, -50%);
-        }
-
-        .switch {
-            font-size: 17px;
-            position: relative;
-            display: inline-block;
-            width: 3.5em;
-            height: 2em;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            --background: #1c1c23;
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--background);
-            transition: .5s;
-            border-radius: 30px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 1.4em;
-            width: 1.4em;
-            border-radius: 50%;
-            left: 10%;
-            bottom: 15%;
-            box-shadow: inset 8px -4px 0px 0px #fff000;
-            background: var(--background);
-            transition: .5s;
-        }
-
-        input:checked + .slider {
-            background-color: #fff;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(100%);
-            box-shadow: inset 15px -4px 0px 15px #fff000;
-        }
-
-        .lightTheme{
-            .error-box{
-                background-color: #fff;
-                border: 1px solid #ECF1FD;
-            }
-            h4{
-                color: black;
-            }
-            .home-link{
-                background-color: #5cb85c;
-            }
-            background-color: #dadde2;
-        }
-    </style>
 </head>
 <body>
-<div class="theme">
-    <label class="switch">
-        <input type="checkbox" id="theme">
-        <span class="slider"></span>
-    </label>
-</div>
+<header>
+    <div class="container-logo">
+        <a href="/"><img src="../images/logo2.png" alt="Logo"></a>
+        <h2><a class="logo" href="/">𝓗𝓕𝓕𝓻𝓮𝓮𝓵𝓪𝓷𝓬𝓮𝓻𝓼</a></h2>
+        <div class="theme">
+            <label class="switch">
+                <input type="checkbox" id="theme">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</header>
+<%- include('back.ejs') %>
 <div class="container">
     <div class="error-box">
         <h2>An error occurred</h2>
+
         <h4><%= message %></h4>
-        <a href="/" class="home-link">Return to home</a>
+        <a class="home-link" onclick="window.history.back();">Return to home</a>
     </div>
 </div>
 <script src="/javascripts/theme.js"></script>
