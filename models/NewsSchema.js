@@ -9,7 +9,7 @@ const day = currentDate.getDate().toString().padStart(2, '0');
 const hours = currentDate.getHours().toString().padStart(2, '0');
 const minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
-const dateOnly = `${month}.${day}.${year}`;
+const dateOnly = `${day}.${month}.${year}`;
 const timeOnly = `${hours}:${minutes}`;
 
 const NewsSchema = new Schema({

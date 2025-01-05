@@ -261,12 +261,13 @@ body {
     margin-top: -5px;
 }
 .date{
-    margin: 16px 10px;
+    margin: 22px 10px;
     color: #6c757d;
-    font-size: 14px;
+    font-size: 13px;
 }
 .time{
-    font-size: 12px;
+    margin-top: 15px;
+    font-size: 11px;
     color: #6c757d;
 }
 .input {

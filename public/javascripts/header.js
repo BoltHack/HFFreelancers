@@ -232,16 +232,12 @@ function pages() {
 <a class="other-color">${local === 'ru' ? 'Избранное' : 'Favorites'}</a>`
             break;
 
-        case `/fileInfo/${userInfo.fileInfo}`:
+        default:
             pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${infoTitle}</a>
 <a class="between"> > </a>
 <a href="#" class="back-button color-btn" onclick="window.history.back();">${local === 'ru' ? 'Назад' : 'Back'}</a>`
-            break;
-
-        default:
-            pageName.innerHTML = null;
             break;
     }
 }

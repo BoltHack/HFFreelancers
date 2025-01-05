@@ -9,7 +9,7 @@ const hours = currentDate.getHours().toString().padStart(2, '0');
 const minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
 
-const dateOnly = `${month}.${day}.${year}`;
+const dateOnly = `${day}.${month}.${year}`;
 const timeOnly = `${hours}:${minutes}`;
 
 const CommentsModel = new Schema({
@@ -23,8 +23,12 @@ const CommentsModel = new Schema({
         type: String,
     },
     date: {
-        type: String,
-        default: dateOnly
+        type: Object,
+        default: {
+            year: currentDate.getFullYear(),
+            month: (currentDate.getMonth() + 1).toString().padStart(2, '0'),
+            day: currentDate.getDate().toString().padStart(2, '0')
+        }
     },
     time: {
         type: String,
