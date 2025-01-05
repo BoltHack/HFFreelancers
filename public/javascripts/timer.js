@@ -32,7 +32,11 @@ const accessStoredEndTime = localStorage.getItem('accessTokenEndTime');
 
 if (accessStoredEndTime) {
     accessUpdateTimer();
-} else {
+}
+if (accessStoredEndTime === typeof String){
+    accessStartTimer(ACCESS_TIMER_DURATION);
+}
+else {
     accessStartTimer(ACCESS_TIMER_DURATION);
 }
 
@@ -103,7 +107,11 @@ const refreshStoredEndTime = localStorage.getItem('refreshTokenEndTime');
 
 if (refreshStoredEndTime) {
     refreshUpdateTimer();
-} else {
+}
+if (refreshStoredEndTime === typeof String){
+    refreshStartTimer(REFRESH_TIMER_DURATION);
+}
+else {
     refreshStartTimer(REFRESH_TIMER_DURATION);
 }
 
@@ -179,7 +187,11 @@ const sessionEndTime = localStorage.getItem('sessionEndTime');
 
 if (sessionEndTime) {
     sessionUpdateTimer();
-} else {
+}
+if (sessionEndTime === typeof String){
+    sessionTimerStart(SESSION_TIMER_DURATION);
+}
+else {
     sessionTimerStart(SESSION_TIMER_DURATION);
 }
 
