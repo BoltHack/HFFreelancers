@@ -47,18 +47,32 @@ class AdminController {
     }
     static sendLinksAdmin = async (req, res, next) => {
         try{
-
+            const links = await LinksModel.find();
+            return res.render('admin/sendLinks', {links});
         }catch(err){
             next(err)
         }
-        const links = await LinksModel.find();
-        return res.render('admin/sendLinks', {links});
     }
     static banMenuAdmin = async (req, res, next) => {
         try{
             const {id} = req.params;
             const user = await UsersModel.findById(id);
             return res.render('admin/banMenu', {user});
+        }catch(err){
+            next(err)
+        }
+    }
+    static addIpToTheListAdmin = async (req, res, next) => {
+        try{
+            return res.render('admin/addIpToTheList');
+        }catch(err){
+            next(err)
+        }
+    }
+    static onlyIpBanListAdmin = async (req, res, next) => {
+        try{
+            const ips = await BanIpListModel.find();
+            return res.render('admin/onlyIpBanList', {ips});
         }catch(err){
             next(err)
         }
@@ -475,6 +489,43 @@ class AdminController {
                     {new: true}
                 );
             }
+
+            setTimeout(() => {
+                res.redirect('/admin/allUsers');
+                console.log(id, ' успешно забанен!')
+            }, 500);
+        } catch (e) {
+            console.log(e);
+            next(e);
+        }
+    }
+
+    static banIpToTheListAdmin = async (req, res, next) => {
+        try {
+            const {id} = req.params;
+            const {reason, description, banIp} = req.body;
+            const user = req.user;
+
+            const banIpPerms = await UsersModel.find({ip: banIp});
+            const users = banIpPerms.map(user => user._id);
+
+                await UsersModel.updateMany(
+                    { _id: { $in: users } },
+                    {
+                        $set: {
+                            banned: [{banType: true, banIp: true, reason, description, author: [{authorName: user.name, authorId: user.id}] }], reviews: []
+                        }
+                    },
+                    {new: true}
+                );
+                const banIpEntry = new BanIpListModel({
+                    ip: banIp,
+                    reason,
+                    description,
+                    author: [{ authorName: user.name, authorId: user.id }]
+                });
+                await banIpEntry.save();
+
 
             setTimeout(() => {
                 res.redirect('/admin/allUsers');

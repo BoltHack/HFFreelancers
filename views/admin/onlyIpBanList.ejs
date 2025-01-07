@@ -162,54 +162,38 @@
 <%- include('adminHeader.ejs') %>
 <div class="br"></div>
 <div class="search">
-    <h2>Список пользователей</h2>
-    <input type="text" id="searchInput" placeholder="Поиск по id или email">
+    <h2>Список заблокированных ip-адресов</h2>
+    <input type="text" id="searchInput" placeholder="Поиск по id или ip">
 </div>
-<div class="dop-pos">
-    <a href="/admin/onlyIpBanList" class="only-ip-ban-list">Только ip-адреса</a>
-</div>
+
 <ul class="ul" id="userList">
-    <% if (users && users.length) { %>
-        <% users.forEach(user => { %>
-            <li class="li">
-                <div class="user-info">
-                    <p class="user-id">id: <%= user._id %></p>
-                    <p class="user-email">Эл. Адрес: <%= user.email %></p>
-                    <br>
-                    <p>Автор бана: <%= user.banned[0].author[0].authorName %> | <%= user.banned[0].author[0].id %></p>
-                    <p>Дата блокировки: <%= user.banned[0].date %></p>
-                    <br>
-                    <p class="reason">Забанен по причине: <%= user.banned[0].reason %></p>
-                    <br>
-                    <% if(user.banned && user.banned[0].description) {%>
-                        <p class="description">Доп. инфа: <%= user.banned[0].description %></p>
-                    <%} else {%>
-                        <p>Доп. инфа: Отсутствует</p>
-                    <%}%>
-                    <br>
-                    <div style="display: flex; gap: 10px;">
-                        <% if (user.banned[0].banIp === true) {%>
-                            <form action="/admin/playerUnbanIp/<%= user._id %>/<%= user.ip %>" method="POST">
-                                <button class="unban-btn">Разблокировать ip</button>
-                            </form>
-                        <%} else {%>
-                                <form action="/admin/playerUnban/<%= user._id %>" method="POST">
-                                    <button class="unban-btn">Разблокировать</button>
-                                </form>
-                            <%}%>
-                    </div>
-                    <% }) %>
+    <% if (ips && ips.length) { %>
+        <% ips.forEach(ip => { %>
+        <li class="li">
+            <div class="user-info">
+                <p class="user-id">id: <%= ip._id %></p>
+                <p class="user-ip">ip-адрес: <%= ip.ip %></p>
+                <br>
+                <p>Автор бана: <%= ip.author[0].authorName %> | <%= ip.author[0].id %></p>
+                <br>
+                <p class="reason">Забанен по причине: <%= ip.reason %></p>
+                <br>
+                <% if(ip.author && ip.author[0].description) {%>
+                    <p class="description">Доп. инфа: <%= ip.author[0].description %></p>
+                <%} else {%>
+                    <p>Доп. инфа: Отсутствует</p>
+                <%}%>
+                <br>
+                <div style="display: flex; gap: 10px;">
+                    <form action="/admin/playerUnbanIp/<%= ip._id %>/<%= ip.ip %>" method="POST">
+                        <button class="unban-btn">Разблокировать</button>
+                    </form>
                 </div>
-            </li>
-    <% } else { %>
-        <br>
-        <br>
-        <br>
-        <br>
-        <p class="users-not-found">Пользователей не найдено.</p>
-    <% } %>
+                <% }) %>
+            </div>
+        </li>
+    <%}%>
 </ul>
-<%- include('../pagination.ejs') %>
 <br>
 <br>
 <br>
@@ -223,8 +207,8 @@
 
         Array.from(users).forEach(user => {
             const userId = user.querySelector('.user-id').textContent.toLowerCase();
-            const userEmail = user.querySelector('.user-email').textContent.toLowerCase();
-            if (userId.includes(searchValue) || userEmail.includes(searchValue)) {
+            const userIp = user.querySelector('.user-ip').textContent.toLowerCase();
+            if (userId.includes(searchValue) || userIp.includes(searchValue)) {
                 user.style.display = '';
             }
             else {

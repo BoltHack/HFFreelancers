@@ -168,14 +168,14 @@
             text-align: center;
             margin: auto 0;
         }
-        .only-banned-users{
+        .only-banned-users, .add-ip-to-the-list{
             color: #2a47cb;
         }
         .request-ban-users, .only-ip-banned-users{
             color: #2a47cb;
             margin-left: 20px;
         }
-        .only-banned-users:hover, .request-ban-users:hover, .only-ip-banned-users:hover{
+        .only-banned-users:hover, .request-ban-users:hover, .only-ip-banned-users:hover, .add-ip-to-the-list:hover{
             text-decoration: underline;
             text-decoration-color: black;
         }
@@ -248,6 +248,10 @@
     <a href="/admin/banList" class="only-banned-users">Заблокированные пользователи</a>
     <a href="/admin/banIpList" class="only-ip-banned-users">Заблокированные по ip пользователи</a>
     <a href="/admin/requestUnban" class="request-ban-users">Заявки на разбан</a>
+</div>
+<br>
+<div class="dop-pos">
+    <a href="/admin/addIpToTheList" class="add-ip-to-the-list">Внести определённый ip-адрес в список блокировки</a>
 </div>
 <ul class="ul" id="userList">
     <% if (users && users.length) { %>

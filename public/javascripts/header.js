@@ -131,7 +131,7 @@ function pages() {
     const pageName = document.getElementById('pageName');
     const page = window.location.pathname;
     const local = localStorage.getItem('local');
-    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+    const errorBox = document.getElementById('errorBox');
 
     switch (page) {
         case '/moreDetails':

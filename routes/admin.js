@@ -4,7 +4,8 @@ const {
     deleteNewsAdmin, deleteReviewAdmin, sendLinksAdmin, deleteLink, sendLinksPostVk, sendLinksPostDiscord, sendLinksPostInstagram,
     sendLinksPostFacebook, playerBanAdmin, playerUnbanAdmin, requestUnbanAdmin, banMenuAdmin, banListAdmin,
     createAWebSiteAdmin, createAwebsite, allWebsitesAdmin, deleteFileAdmin, createAdvertisingAdmin, createAdvertisingPost,
-    allAdvertisingAdmin, deleteAdvertising, banIpListAdmin, playerUnbanIpAdmin
+    allAdvertisingAdmin, deleteAdvertising, banIpListAdmin, playerUnbanIpAdmin, addIpToTheListAdmin, banIpToTheListAdmin,
+    onlyIpBanListAdmin
 } = require('../controller/AdminController');
 const {authenticateJWT} = require('../middlewares/jwtAuth');
 const {verifyPermissions} = require('../middlewares/permissionsAuthorization')
@@ -22,6 +23,8 @@ router.get('/createAWebSite', verifyPermissions('Admin'), authenticateJWT, creat
 router.get('/allWebsites', verifyPermissions('Admin'), authenticateJWT, allWebsitesAdmin);
 router.get('/createAdvertising', verifyPermissions('Admin'), authenticateJWT, createAdvertisingAdmin);
 router.get('/allAdvertising', verifyPermissions('Admin'), authenticateJWT, allAdvertisingAdmin);
+router.get('/addIpToTheList', verifyPermissions('Admin'), authenticateJWT, addIpToTheListAdmin);
+router.get('/onlyIpBanList', verifyPermissions('Admin'), authenticateJWT, onlyIpBanListAdmin);
 
 router.post('/deleteUserAdmin/:id', verifyPermissions('Admin'), deleteUserAdmin);
 router.post('/deleteNewsAdmin/:id', verifyPermissions('Admin'), deleteNewsAdmin);
@@ -43,6 +46,7 @@ router.post('/deleteLink/:id', verifyPermissions('Admin'), deleteLink);
 router.post('/playerBan/:id', verifyPermissions('Admin'), playerBanAdmin);
 router.post('/playerUnban/:id', verifyPermissions('Admin'), playerUnbanAdmin);
 router.post('/playerUnbanIp/:id/:ip', verifyPermissions('Admin'), playerUnbanIpAdmin);
+router.post('/banIpToTheList/:ip', verifyPermissions('Admin'), banIpToTheListAdmin);
 router.post('/deleteAdvertising/:id', verifyPermissions('Admin'), deleteAdvertising);
 
 module.exports = router;
