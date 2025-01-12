@@ -266,3 +266,4 @@ function admin() {
     localStorage.setItem('ref', 'refAdmin');
     window.location.href = '/accessToken';
 }
+

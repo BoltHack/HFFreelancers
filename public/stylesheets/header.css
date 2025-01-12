@@ -23,6 +23,7 @@ html {
     scrollbar-width: thin;
     /*scrollbar-color: #212121 #16171d;*/
     scrollbar-color: #212121 #313338;
+    scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar-thumb:hover {

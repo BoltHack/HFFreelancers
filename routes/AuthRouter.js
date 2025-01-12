@@ -7,7 +7,7 @@ const {authenticateJWT} = require('../middlewares/jwtAuth');
 const router = express.Router();
 
 router.get('/register', registerView );
-router.post('/register/:ip', validateRegister, checkEmail, registerNewUser);
+router.post(`/register/:ip`, validateRegister, checkEmail, registerNewUser);
 
 router.get('/login', loginView);
 router.post('/login/:ip',  validateLogin, loginUser);

@@ -59,12 +59,10 @@ main{
     left: 0;
     width: 100%;
     height: 110%;
-    background-image: url("../images/programming.jpg");
-    /*background-color: #16171d;*/
-    /*background: linear-gradient(45deg, #8d0000, #44006b, #270164, #010433);*/
-    /*background-attachment: fixed;*/
-    /*background-size: 500%;*/
-    /*animation: backgroundAnimation 6s infinite ease;*/
+    /*background-image: url("../images/programming.jpg");*/
+    background-image: url("../images/fon3.jpg");
+    background-repeat: no-repeat;
+    /*background-size: 100%;*/
     flex-wrap: wrap;
 }
 /*@keyframes backgroundAnimation {*/
@@ -94,7 +92,8 @@ main{
     }
 }
 .info p {
-    color: #21f0df;
+    /*color: #21f0df;*/
+    color: #f3d5b5;
     font-weight: 1000;
     font-size: 22px;
     /*background: rgb(104,65,162);*/
@@ -107,7 +106,8 @@ main{
 .freelance{
     font-weight:1000;
     font-size: 60px;
-    color: #21f0df;
+    /*color: #21f0df;*/
+    color: #f3d5b5;
 }
 .br{
     margin-top: 850px;

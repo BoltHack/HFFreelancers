@@ -99,7 +99,11 @@ const UsersSchema = new Schema({
     contacts: {
         type: [ContactsSchema],
         default: []
-    }
+    },
+    // userData: {
+    //     type: Object,
+    //     default: {}
+    // }
 });
 
 const UsersModel = model('user', UsersSchema);

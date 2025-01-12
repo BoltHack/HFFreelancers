@@ -51,6 +51,8 @@ class AuthController {
             const {name, email, password} = req.body;
             const {ip} = req.params;
 
+            // const data = JSON.parse(decodeURIComponent(userData));
+
             const hashPassword = bcrypt.hashSync(password, 8)
 
             const newUser = await new UsersModel({
@@ -61,6 +63,7 @@ class AuthController {
                 banned: [{ banType: false }],
                 locale: 'en',
                 ip: ip,
+                // userData: data
             })
 
             await newUser.save();
