@@ -13,7 +13,8 @@ function getData(){
                 localStorage.setItem('userInfo', JSON.stringify({
                     'id': user.id,
                     'name': user.name,
-                    'profileImage': 'data:image/png;base64,' + image
+                    'profileImage': 'data:image/png;base64,' + image,
+                    'previousPage': 'Все типы'
                 }));
                 window.location.reload();
             }

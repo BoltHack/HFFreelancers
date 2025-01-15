@@ -208,6 +208,7 @@ main{
 }
 .services-container p {
     color: #ECF1FD;
+    margin-left: 10px;
 }
 .services-container h1, .services-container h2, .services-container h3 {
     margin-top: 0;

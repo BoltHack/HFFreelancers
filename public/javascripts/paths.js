@@ -1,4 +1,5 @@
 const tokenL = localStorage.getItem('token');
+const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
 async function allPaths() {
     const paths = {
         '/': 'refMain',
@@ -21,11 +22,11 @@ async function allPaths() {
     const pathname = window.location.pathname;
     if (pathname in paths) {
         localStorage.setItem('ref', paths[pathname]);
+        userInfo.previousPage = paths[pathname];
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
         if (tokenL){
             await getNewToken()
         }
-    } else if (pathname.startsWith('/sendReviews')) {
-        localStorage.setItem('ref', 'refSendReviews');
     }
 }
 

@@ -1,5 +1,4 @@
 function refs(){
-    const refId = localStorage.getItem('id');
     const ref = localStorage.getItem('ref');
     if (window.location.pathname === '/PersonalArea'){
         if (ref !== 'refPersonalArea'){
@@ -7,7 +6,7 @@ function refs(){
             window.location.href = '/accessToken'
         }
     }
-    if (window.location.pathname === `/sendReviews/${refId}`){
+    if (window.location.pathname === `/sendReviews`){
         if (ref !== 'refSendReviews'){
             localStorage.setItem('ref', 'refSendReviews');
             window.location.href = '/accessToken'
@@ -127,121 +126,109 @@ function local(){
 }
 local()
 
-function pages() {
+function pages(){
     const pageName = document.getElementById('pageName');
     const page = window.location.pathname;
     const local = localStorage.getItem('local');
-    const errorBox = document.getElementById('errorBox');
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+    const previousPage = userInfo.previousPage;
 
-    switch (page) {
-        case '/moreDetails':
-            pageName.innerHTML = `
+    if (page === '/moreDetails'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Подробнее' : 'More details'}</a>`
-            break;
-
-        case '/allReviews':
-            pageName.innerHTML = `
+    } else if (page === '/allReviews'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Все отзывы' : 'All reviews'}</a>`
-            break;
-
-        case '/sendReviews':
-            pageName.innerHTML = `
+    } else if (page === '/sendReviews'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a onclick="allReviewsJoin();" class="color-btn">${local === 'ru' ? 'Все отзывы' : 'All reviews'}</a>
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Оставить отзыв' : 'Send review'}</a>`
-            break;
-
-        case '/aboutUs':
-            pageName.innerHTML = `
+    } else if (page === '/aboutUs'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'О нас' : 'About us'}</a>`
-            break;
-
-        case '/rules':
-            pageName.innerHTML = `
+    } else if (page === '/rules'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Правила использования' : 'Terms of Use'}</a>`
-            break;
-
-        case '/privacyPolicy':
-            pageName.innerHTML = `
+    } else if (page ==='/privacyPolicy'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Политика конфиденциальности' : 'Privacy policy'}</a>`
-            break;
-
-        case '/PersonalArea':
-            pageName.innerHTML = `
+    } else if (page === '/PersonalArea'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Личный кабинет' : 'Personal area'}</a>`
-            break;
-
-        case '/readyMadeSites':
-            pageName.innerHTML = `
+    } else if (page === '/readyMadeSites'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Все типы' : 'All types'}</a>`
-            break;
-
-        case '/readyMadeSites/html-css-js':
-            pageName.innerHTML = `
+    } else if (page === '/readyMadeSites/html-css-js'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">html css js</a>`
-            break;
-
-        case '/readyMadeSites/javascript':
-            pageName.innerHTML = `
+    } else if (page === '/readyMadeSites/javascript'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Javascript</a>`
-            break;
-
-        case '/readyMadeSites/reactJs':
-            pageName.innerHTML = `
+    } else if (page === '/readyMadeSites/reactJs'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">React js</a>`
-            break;
-
-        case '/readyMadeSites/nodeJs':
-            pageName.innerHTML = `
+    } else if (page === '/readyMadeSites/nodeJs'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Node js</a>`
-            break;
-
-        case '/readyMadeSites/fullstack':
-            pageName.innerHTML = `
+    } else if (page === '/readyMadeSites/fullstack'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">Fullstack</a>`
-            break;
-
-        case '/readyMadeSites/favorites':
-            pageName.innerHTML = `
+    } else if (page === '/readyMadeSites/favorites'){
+        pageName.innerHTML = `
 <a class="between"> > </a>
 <a onclick="allSites();" class="color-btn">${local === 'ru' ? 'Все типы' : 'All types'}</a>
 <a class="between"> > </a>
 <a class="other-color">${local === 'ru' ? 'Избранное' : 'Favorites'}</a>`
-            break;
-
-        default:
-            pageName.innerHTML = `
+    } else if (page.startsWith('/fileInfo/')){
+        pageName.innerHTML = `
 <a class="between"> > </a>
-<a class="other-color">${infoTitle}</a>
+<a class="color-btn" id="previousPageClick">${previousPage === 'refHtmlCssJs' ? previousPage === 'Html css js' : previousPage === 'refReactJs' ? 'React js' : previousPage === 'refJavascript' ? 'Javascript' : previousPage === 'refNodeJs' ? 'Node js' : previousPage === 'refFullstack' ? 'Fullstack' : previousPage === 'refReadyMadeSites' ? local === 'ru' ? 'Все типы' : 'All types' : `<a class="color-btn" onclick="allSites();">${local === 'ru' ? 'Все типы' : 'All types'}</a>`}</a>
 <a class="between"> > </a>
-<a href="#" class="back-button color-btn" onclick="window.history.back();">${local === 'ru' ? 'Назад' : 'Back'}</a>`
-            break;
+<a class="other-color">${infoTitle}</a>`
+    } else if (page.startsWith('/profile/')){
+        pageName.innerHTML = `
+<a class="between"> > </a>
+<a class="color-btn" onclick="allReviewsJoin();">${local === 'ru' ? 'Все отзывы' : 'All reviews'}</a>
+<a class="between"> > </a>
+<a class="other-color"> ${local === 'ru' ? `Профиль ${profileName}` : `${profileName} profile`}  </a>`
+    } else {
+        pageName.innerHTML = `
+<a class="between"> > </a>
+<a class="color-btn">${local === 'ru' ? 'Ошибка' : 'Error'}</a>`
     }
+
+    document.getElementById('previousPageClick').addEventListener('click', () => {
+        localStorage.setItem('ref', userInfo.previousPage);
+        window.location.href = '/accessToken';
+    })
 }
 pages();
+
+
 
 function PersonalAreaJoin() {
     localStorage.setItem('ref', 'refPersonalArea');

@@ -230,7 +230,8 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     width: 400px;
-    height: 500px;
+    height: 525px;
+    border-top: 1px solid #666;
 }
 .comments h3{
     color: #666;
@@ -441,6 +442,9 @@ footer p {
     }
     .comment{
         color: #666;
+    }
+    .comments{
+        border-top: 1px solid #333;
     }
     background-color: #ECF1FD;
 }
