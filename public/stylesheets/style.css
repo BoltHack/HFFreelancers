@@ -125,7 +125,8 @@ a{
   color: #0d49d7;
 }
 a:hover{
-  color: #a2a8d3;
+  /*color: #a2a8d3;*/
+  text-decoration: underline;
 }
 .google-account{
   display: flex;
