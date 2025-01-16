@@ -1,8 +1,11 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #212121;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    flex-direction: column;
+    display: grid;
+    background-color: #212121;
+    grid-template-rows: auto 1fr auto;
 }
 
 .rules-container {

@@ -64,6 +64,7 @@ main{
     background-repeat: no-repeat;
     /*background-size: 100%;*/
     flex-wrap: wrap;
+    z-index: 1;
 }
 /*@keyframes backgroundAnimation {*/
 /*    0%, 100%{*/

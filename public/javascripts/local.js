@@ -1,6 +1,7 @@
-let userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-let homeId = userInfo.id;
+
 function localsFRu() {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+    const homeId = userInfo.id;
     const token = localStorage.getItem('token');
     const url = token ? `/changeLocalAuth/${homeId}/ru` : '/changeLocal/ru';
     fetch(url, {
@@ -28,6 +29,8 @@ function localsFRu() {
 }
 
 function localsFEn() {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+    const homeId = userInfo.id;
     const token = localStorage.getItem('token');
     const url = token ? `/changeLocalAuth/${homeId}/en` : '/changeLocal/en';
     fetch(url, {

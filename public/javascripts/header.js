@@ -215,10 +215,6 @@ function pages(){
 <a class="color-btn" onclick="allReviewsJoin();">${local === 'ru' ? 'Все отзывы' : 'All reviews'}</a>
 <a class="between"> > </a>
 <a class="other-color"> ${local === 'ru' ? `Профиль ${profileName}` : `${profileName} profile`}  </a>`
-    } else {
-        pageName.innerHTML = `
-<a class="between"> > </a>
-<a class="color-btn">${local === 'ru' ? 'Ошибка' : 'Error'}</a>`
     }
 
     document.getElementById('previousPageClick').addEventListener('click', () => {
