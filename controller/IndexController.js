@@ -464,6 +464,10 @@ class IndexController {
                 const errorMsg = locale === 'en' ? 'You have already posted your review.' : 'Вы уже выложили свой отзыв.';
                 return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
             }
+            if (!message.trim()) {
+                const errorMsg = locale === 'en' ? 'The field must not be empty.' : 'Поле не должно быть пустым.';
+                return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+            }
 
             user.reviews.push({ review: message, grade });
             await user.save();
@@ -782,6 +786,11 @@ class IndexController {
                 res.cookie('locale', locale, { httpOnly: true, maxAge: 10 * 365 * 24 * 60 * 60 * 1000  });
             }
 
+            if (!message.trim()) {
+                const errorMsg = locale === 'en' ? 'The field must not be empty.' : 'Поле не должно быть пустым.';
+                return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+            }
+
             await WebsitesModel.findByIdAndUpdate(id, {
                 $set: { commentsNumber: (siteComment.commentsNumber || 0) + 1 }
             });
@@ -865,11 +874,15 @@ class IndexController {
             const {id} = req.params;
             const {youtube, vk} = req.body;
 
-            const user = await UsersModel.findById(id);
             let locale = req.cookies['locale'] || 'en';
 
            if (youtube === "" && vk === ""){
                const errorMsg = locale === 'en' ? 'Please fill out all fields.' : 'Пожалуйста, заполните все поля.'
+               return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+           }
+
+           if (!youtube.trim() && !vk.trim()) {
+               const errorMsg = locale === 'en' ? 'The field must not be empty.' : 'Поле не должно быть пустым.';
                return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
            }
 

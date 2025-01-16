@@ -127,10 +127,9 @@ function logout() {
         }
 
         if (status) {
-            localStorage.removeItem('id');
-            localStorage.removeItem('profileImage');
+
             localStorage.removeItem('accessTokenEndTime');
-            localStorage.removeItem('name');
+            localStorage.removeItem('userInfo');
             localStorage.removeItem('refreshTokenEndTime');
             localStorage.removeItem('token');
             localStorage.removeItem('ref');

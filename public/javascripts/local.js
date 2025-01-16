@@ -1,4 +1,3 @@
-
 function localsFRu() {
     const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
     const homeId = userInfo.id;
