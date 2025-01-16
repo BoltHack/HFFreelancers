@@ -358,6 +358,12 @@ class IndexController {
     static profileView = async (req, res, next) => {
         try {
             const {id} = req.params;
+
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                const errorMsg = req.cookies['locale'] === 'en' ? 'Profile not found.' : 'Профиль не найден.';
+                return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+            }
+
             const profile = await UsersModel.findById(id);
 
             const favoriteIds = profile.favorites.map(favorite => favorite.favId);

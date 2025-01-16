@@ -245,8 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
             userInfo.fileInfo = dataInfo;
             localStorage.setItem('userInfo', JSON.stringify(userInfo));
             localStorage.setItem('ref', 'refFileInfo');
-            window.location.href = '/accessToken';
-            // window.location.href = `/fileInfo/${dataInfo}`;
+            if (window.location.pathname.startsWith('/profile/')){
+                window.open('/accessToken', '_blank');
+            }
+            else {
+                window.location.href = '/accessToken';
+            }
         })
     })
 });

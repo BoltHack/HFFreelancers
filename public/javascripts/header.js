@@ -206,7 +206,7 @@ function pages(){
     } else if (page.startsWith('/fileInfo/')){
         pageName.innerHTML = `
 <a class="between"> > </a>
-<a class="color-btn" id="previousPageClick">${previousPage === 'refHtmlCssJs' ? previousPage === 'Html css js' : previousPage === 'refReactJs' ? 'React js' : previousPage === 'refJavascript' ? 'Javascript' : previousPage === 'refNodeJs' ? 'Node js' : previousPage === 'refFullstack' ? 'Fullstack' : previousPage === 'refReadyMadeSites' ? local === 'ru' ? 'Все типы' : 'All types' : `<a class="color-btn" onclick="allSites();">${local === 'ru' ? 'Все типы' : 'All types'}</a>`}</a>
+<a class="color-btn" id="previousPageClick">${previousPage === 'refHtmlCssJs' ? 'Html css js' : previousPage === 'refReactJs' ? 'React js' : previousPage === 'refJavascript' ? 'Javascript' : previousPage === 'refNodeJs' ? 'Node js' : previousPage === 'refFullstack' ? 'Fullstack' : previousPage === 'refReadyMadeSites' ? local === 'ru' ? 'Все типы' : 'All types' : `<a class="color-btn" onclick="allSites();">${local === 'ru' ? 'Все типы' : 'All types'}</a>`}</a>
 <a class="between"> > </a>
 <a class="other-color">${infoTitle}</a>`
     } else if (page.startsWith('/profile/')){
