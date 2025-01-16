@@ -452,6 +452,9 @@ html.lightTheme {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.header-border a{
+    color: #24527a;
+}
 .header-border a:hover{
     text-decoration: underline;
 }
