@@ -1,3 +1,9 @@
+function getCookie(name) {
+    const cookies = document.cookie.split('; ');
+    const cookie = cookies.find(row => row.startsWith(`${name}=`));
+    return cookie ? cookie.split('=')[1] : null;
+}
+
 const ACCESS_TIMER_DURATION = 900000;
 const token = localStorage.getItem('token');
 
@@ -7,14 +13,16 @@ function accessStartTimer(duration) {
     const endTime = startTime + duration;
 
     if (token){
-        localStorage.setItem('accessTokenEndTime', endTime);
+        // localStorage.setItem('accessTokenEndTime', endTime);
+        document.cookie = `accessTokenEndTime=${endTime}; path=/;`;
     }
 
     accessUpdateTimer();
 }
 
 function accessUpdateTimer() {
-    const endTime = parseInt(localStorage.getItem('accessTokenEndTime'), 10);
+    // const endTime = parseInt(localStorage.getItem('accessTokenEndTime'), 10);
+    const endTime = parseInt(getCookie('accessTokenEndTime'), 10);
 
     const interval = setInterval(() => {
         const currentTime = Date.now();
@@ -23,12 +31,14 @@ function accessUpdateTimer() {
         if (remainingTime <= 0) {
             clearInterval(interval);
             getAccessTokens()
-            localStorage.removeItem('accessTokenEndTime');
+            // localStorage.removeItem('accessTokenEndTime');
+            document.cookie = `accessTokenEndTime=; max-age=0; path=/;`;
         }
     }, 1000);
 }
 
-const accessStoredEndTime = localStorage.getItem('accessTokenEndTime');
+// const accessStoredEndTime = localStorage.getItem('accessTokenEndTime');
+const accessStoredEndTime = getCookie('accessTokenEndTime');
 
 if (accessStoredEndTime) {
     accessUpdateTimer();
@@ -82,14 +92,16 @@ function refreshStartTimer(duration) {
     const endTime = startTime + duration;
 
     if (token) {
-        localStorage.setItem('refreshTokenEndTime', endTime);
+        // localStorage.setItem('refreshTokenEndTime', endTime);
+        document.cookie = `refreshTokenEndTime=${endTime}; path=/;`;
     }
 
     refreshUpdateTimer();
 }
 
 function refreshUpdateTimer() {
-    const endTime = parseInt(localStorage.getItem('refreshTokenEndTime'), 10);
+    // const endTime = parseInt(localStorage.getItem('refreshTokenEndTime'), 10);
+    const endTime = parseInt(getCookie('refreshTokenEndTime'), 10);
 
     const interval = setInterval(() => {
         const currentTime = Date.now();
@@ -98,12 +110,14 @@ function refreshUpdateTimer() {
         if (remainingTime <= 0) {
             clearInterval(interval);
             getRefreshTokens()
-            localStorage.removeItem('refreshTokenEndTime');
+            // localStorage.removeItem('refreshTokenEndTime');
+            document.cookie = `refreshTokenEndTime=; max-age=0; path=/;`;
         }
     }, 1000);
 }
 
-const refreshStoredEndTime = localStorage.getItem('refreshTokenEndTime');
+// const refreshStoredEndTime = localStorage.getItem('refreshTokenEndTime');
+const refreshStoredEndTime = getCookie('refreshTokenEndTime');
 
 if (refreshStoredEndTime) {
     refreshUpdateTimer();
@@ -209,14 +223,13 @@ function sessionLogout() {
         }
 
         if (status) {
-            localStorage.removeItem('id');
-            localStorage.removeItem('profileImage');
-            localStorage.removeItem('accessTokenEndTime');
-            localStorage.removeItem('name');
-            localStorage.removeItem('refreshTokenEndTime');
+            localStorage.removeItem('userInfo');
             localStorage.removeItem('token');
             localStorage.removeItem('ref');
             localStorage.removeItem('favorites');
+            localStorage.removeItem('session');
+            localStorage.removeItem('sessionEndTime');
+            localStorage.removeItem('menus');
             window.location.href = "/auth/sessionExpired";
             return;
         }

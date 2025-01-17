@@ -127,10 +127,7 @@ function logout() {
         }
 
         if (status) {
-
-            localStorage.removeItem('accessTokenEndTime');
             localStorage.removeItem('userInfo');
-            localStorage.removeItem('refreshTokenEndTime');
             localStorage.removeItem('token');
             localStorage.removeItem('ref');
             localStorage.removeItem('favorites');
