@@ -24,36 +24,36 @@ async function allPaths() {
         localStorage.setItem('ref', paths[pathname]);
         userInfo.previousPage = paths[pathname];
         localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        if (tokenL){
-            await getNewToken()
-        }
+        // if (tokenL){
+        //     await getNewToken()
+        // }
     }
 }
 
 allPaths();
 
-async function getNewToken() {
-    try {
-        const response = await fetch('/accessToken', {
-            method: 'POST',
-            credentials: 'include'
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            const {token} = data;
-
-            if (!token) {
-                console.log('Токен не найден')
-                return;
-            }
-
-            localStorage.setItem('token', token);
-        }
-    } catch (error) {
-        console.error('Ошибка:', error);
-    }
-}
+// async function getNewToken() {
+//     try {
+//         const response = await fetch('/accessToken', {
+//             method: 'POST',
+//             credentials: 'include'
+//         });
+//
+//         if (response.ok) {
+//             const data = await response.json();
+//             const {token} = data;
+//
+//             if (!token) {
+//                 console.log('Токен не найден')
+//                 return;
+//             }
+//
+//             localStorage.setItem('token', token);
+//         }
+//     } catch (error) {
+//         console.error('Ошибка:', error);
+//     }
+// }
 
 function htmlCssJs(){
     localStorage.setItem('ref', 'refHtmlCssJs');
