@@ -136,7 +136,7 @@ function pages(){
     if (page === '/moreDetails'){
         pageName.innerHTML = `
 <a class="between"> > </a>
-<a class="other-color">${local === 'ru' ? 'Подробнее' : 'More details'}</a>`
+<a class="other-color">${local === 'ru' ? 'Условия для клиентов' : 'Terms for clients'}</a>`
     } else if (page === '/allReviews'){
         pageName.innerHTML = `
 <a class="between"> > </a>
