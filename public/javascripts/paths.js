@@ -1,4 +1,4 @@
-const tokenL = localStorage.getItem('token');
+// const tokenL = localStorage.getItem('token');
 const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
 async function allPaths() {
     const paths = {
