@@ -13,19 +13,5 @@
 </div>
 <p class="pi">Page loading...</p>
 <script src="/javascripts/token.js"></script>
-<script>
-    function theme(){
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark') {
-            document.body.classList.remove('lightTheme');
-            divTheme.checked = false;
-        }
-        else{
-            document.body.classList.add('lightTheme');
-            divTheme.checked = true;
-        }
-    }
-    theme();
-</script>
 </body>
 </html>

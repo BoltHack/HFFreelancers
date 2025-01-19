@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function (){
     let loginForm = document.getElementById('loginForm');
     let email = document.getElementById('email');
     let pwd = document.getElementById('pwd');
+    let loaderButton = document.getElementById('loaderButton');
 
     loginForm.addEventListener('input', () => {
         if (email.value !== '' && pwd.value !== ''){
@@ -37,10 +38,15 @@ document.addEventListener('DOMContentLoaded', function (){
     loginButton.addEventListener('click', (ev) => {
         ev.preventDefault();
 
+        loginButton.hidden = true;
+        loaderButton.hidden = false;
+
         if (!email.value || !pwd.value) {
             local === 'ru' ? errorMenu('Пожалуйста, заполните все поля') : errorMenu('Please fill in all fields');
             email.style.border = '1px solid #780000';
             pwd.style.border = '1px solid #780000';
+            loginButton.hidden = false;
+            loaderButton.hidden = true;
             return;
         }
 
@@ -70,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function (){
                             errorMenu(error)
                             email.style.border = '1px solid #780000';
                             pwd.style.border = '1px solid #780000';
+                            loginButton.hidden = false;
+                            loaderButton.hidden = true;
                             return;
                         }
 
@@ -77,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function (){
                             local === 'en' ? successMenu('Successful login!') : successMenu('Успешный вход!');
                             email.style.border = '1px solid #0d2818';
                             pwd.style.border = '1px solid #0d2818';
+                            loginButton.hidden = false;
+                            loaderButton.hidden = true;
                             localStorage.setItem('token', token);
                             localStorage.setItem('ref', 'refMain');
                             localStorage.setItem('favorites', JSON.stringify(user.favorites));

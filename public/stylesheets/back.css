@@ -24,11 +24,11 @@
     color: #adb5bd;
     text-decoration: none;
     cursor: pointer;
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 .other-color{
     color: #6c757d;
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 .color-btn:hover{
     text-decoration: underline;

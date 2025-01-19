@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function (){
     let email = document.getElementById('email');
     let pwd = document.getElementById('pwd');
     let cpwd = document.getElementById('cpwd');
+    let loaderButton = document.getElementById('loaderButton');
 
     const local = localStorage.getItem('local');
 
@@ -42,12 +43,17 @@ document.addEventListener('DOMContentLoaded', function (){
     registerButton.addEventListener('click', (evt) => {
         evt.preventDefault();
 
+        registerButton.hidden = true;
+        loaderButton.hidden = false;
+
         if (!name.value || !email.value || !pwd.value || !cpwd.value) {
             local === 'ru' ? errorMenu('Пожалуйста, заполните все поля') : errorMenu('Please fill in all fields')
             name.style.border = '1px solid #780000';
             email.style.border = '1px solid #780000';
             pwd.style.border = '1px solid #780000';
             cpwd.style.border = '1px solid #780000';
+            registerButton.hidden = false;
+            loaderButton.hidden = true;
             return;
         }
 
@@ -84,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function (){
                             email.style.border = '1px solid #780000';
                             pwd.style.border = '1px solid #780000';
                             cpwd.style.border = '1px solid #780000';
+                            registerButton.hidden = false;
+                            loaderButton.hidden = true;
                             return;
                         }
                         local === 'en' ? successMenu('Successful registration!') : successMenu('Успешная регистрация!');
@@ -91,6 +99,8 @@ document.addEventListener('DOMContentLoaded', function (){
                         email.style.border = '1px solid #0d2818';
                         pwd.style.border = '1px solid #0d2818';
                         cpwd.style.border = '1px solid #0d2818';
+                        registerButton.hidden = false;
+                        loaderButton.hidden = true;
                         fetch('/acceptCookies/true', {
                             method: 'POST'
                         })

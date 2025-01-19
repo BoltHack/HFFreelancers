@@ -13,19 +13,5 @@
 </div>
 <p class="pi">Загрузка страницы...</p>
 <script src="/javascripts/token.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark') {
-            document.body.classList.remove('lightTheme');
-        }
-        else if(!theme){
-            localStorage.setItem('theme', 'dark');
-        }
-        else{
-            document.body.classList.add('lightTheme');
-        }
-    })
-</script>
 </body>
 </html>
