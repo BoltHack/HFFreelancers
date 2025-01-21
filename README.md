@@ -15,13 +15,11 @@
 `env`:
 ```
 MONGODB_URL=Ваша строка подключения к базе данных MongoDB.
-JWTSecret=Можете вводить тут любые символы. Например: kkgjdhfgdfkgbhdfbgdfhg156g46fg
-refreshTokenSecret=Можете вводить тут любые символы. Например: hlndfghfdh5gf5h65gitgfh+65gf6h1gf65gf1f4gh1gf1h981gf91gf98h1gf98h1g56fg6h1fg
+JWTSecret=Это токен безопасности. Можете вводить тут любые символы. Например: kkgjdhfgdfkgbhdfbgdfhg156g46fg
+refreshTokenSecret=Это токен безопасности. Можете вводить тут любые символы. Например: hlndfghfdh5gf5h65gitgfh+65gf6h1gf65gf1f4gh1gf1h981gf91gf98h1gf98h1g56fg6h1fg
 USER=Электронная почта, которая будет использоваться для отправки кодов восстановления аккаунтов пользователям.
 PASS=Пароль приложения для указанного адреса электронной почты.
 ```
-JWTSecret и refreshTokenSecret - это токены безопасности.
-
 ---
 
 # 3. Настройка переменных окружения и запуск проекта
