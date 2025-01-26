@@ -446,5 +446,8 @@ footer p {
     .comments{
         border-top: 1px solid #333;
     }
+    .href{
+        color: #344e41;
+    }
     background-color: #ECF1FD;
 }

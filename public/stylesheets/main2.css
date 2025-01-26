@@ -409,7 +409,7 @@ ul {
         overflow-x: auto;
     }
 }
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .r-container{
         display: block;
         width: 800px;
@@ -424,6 +424,7 @@ ul {
         margin-right: 1000px;
     }
     .about-container{
+        display: flex;
         max-width: 800px;
     }
     .data{

@@ -6,6 +6,7 @@ const {BanIpListModel} = require("../models/BanIpListModel");
 const {authenticateJWT} = require('../middlewares/jwtAuth');
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
+const {MongooseError} = require("mongoose");
 
 class IndexController {
     static mainView = async (req, res, next) => {
@@ -17,6 +18,11 @@ class IndexController {
             if (!req.cookies['locale']) {
                 res.cookie('locale', locale, { httpOnly: true, maxAge: 10 * 365 * 24 * 60 * 60 * 1000  });
             }
+
+            // if (MongooseError){
+            //   const errorMsg = locale === 'en' ? 'Error connecting to database' : 'Ошибка при подключении к базе данных';
+            //   res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+            // }
 
             if (req.cookies['token']) {
                 await authenticateJWT(req, res, async () => {
@@ -199,7 +205,6 @@ class IndexController {
             let acceptCookies = req.cookies['acceptCookies'];
 
             const contacts = getImage.contacts;
-
             if (!req.cookies['locale']) {
                 res.cookie('locale', locale, { httpOnly: true, maxAge: 10 * 365 * 24 * 60 * 60 * 1000  });
             }
@@ -415,6 +420,11 @@ class IndexController {
 
             if(!req.files || !req.files.image){
                 const errorMsg = locale === 'en' ? 'Failed to load changes.' : 'Не удалось загрузить изменения.';
+                return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+            }
+
+            if (!req.files.image.mimetype.startsWith('image/')) {
+                const errorMsg = locale === 'en' ? 'Only image files are allowed.' : 'Разрешены только файлы изображений.';
                 return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
             }
 
@@ -904,11 +914,20 @@ class IndexController {
             if (req.cookies['token']) {
                 await authenticateJWT(req, res, async () => {
                     const user = req.user;
+                    // const aCode = req.cookies['a_code'];
                     const getImage = await UsersModel.findById({ _id: user.id });
                     const image =  getImage.image;
                     res.json({user, image});
                 });
             }
+            // if (!req.cookies['a_code']){
+            //     const acceptCookies = req.cookies['acceptCookies'];
+            //     const aNewCode = {
+            //         acceptCookies: acceptCookies
+            //     };
+            //     const aCode = jwt.sign(aNewCode, access_code, {expiresIn: 10 * 365 * 24 * 60 * 60 * 1000});
+            //     return res.cookie('a_code', aCode, {httpOnly: true, secure: true, maxAge: 10 * 365 * 24 * 60 * 60 * 1000});
+            // }
         }catch (err){
             console.error('Ошибка:', err);
             res.status(500).json({error: err.message});

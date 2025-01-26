@@ -63,7 +63,8 @@
                                 </div>
                                 <p class="r-date"><%= review.date %></p>
                             </div>
-                            <a href="/profile/<%= review.id %>" class="check-profile">Посмотреть профиль</a>
+<!--                            <a href="/profile/<%= review.id %>" class="check-profile">Посмотреть профиль</a>-->
+                            <a class="check-profile" style="cursor: pointer;" data-id="<%= review.id %>">Посмотреть профиль</a>
                         </div>
                     <% } %>
                 <% }); %>
@@ -75,5 +76,22 @@
 </div>
 </main>
 <script src="/javascripts/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkProfile = document.querySelectorAll('.check-profile');
+        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
+        checkProfile.forEach(button => {
+            button.addEventListener('click', function (){
+                const dataId = this.getAttribute('data-id');
+                userInfo.profileId = dataId
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+                localStorage.setItem('ref', 'refProfile');
+                window.location.href = '/accessToken';
+            })
+        })
+    })
+</script>
 </body>
 </html>

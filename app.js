@@ -10,14 +10,25 @@ const socketIo = require('socket.io');
 // const {WebsitesModel} = require("./models/WebSitesModel");
 // const {UsersModel} = require("./models/UsersModel");
 const http = require("http");
+const mongoose = require("mongoose");
+const {MongooseError} = require("mongoose");
 // const jwt = require("jsonwebtoken");
 
 // const JWTSecret = process.env.JWTSecret;
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+// const io = socketIo(server);
 
+// app.use(async (req, res, next) => {
+//   try {
+//     await start();
+//     next();
+//   }catch (e){
+//     console.log('Ошибка при подключении к базе данных.', e);
+//     return res.redirect(`/error?message=${encodeURIComponent("Ошибка.")}`);
+//   }
+// })
 start();
 
 // io.use((socket, next) => {
@@ -119,6 +130,12 @@ app.use(function(err, req, res, next) {
   if (!req.cookies['locale']) {
     res.cookie('locale', locale, { httpOnly: true });
   }
+
+  // if (MongooseError){
+  //   const errorMsg = locale === 'en' ? 'Error connecting to database' : 'Ошибка при подключении к базе данных';
+  //   res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
+  // }
+
   if (locale === 'en'){
     res.render('en/error', { message });
   }

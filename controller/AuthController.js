@@ -1,7 +1,6 @@
 const {UsersModel } = require("../models/UsersModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {LinksModel} = require("../models/LinksModel");
 const {ForgottenPasswordsModel} = require("../models/ForgottenPasswords");
 const {authenticateJWT} = require("../middlewares/jwtAuth");
 

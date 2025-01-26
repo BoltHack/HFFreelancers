@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const {JWTSecret} = process.env
+const {JWTSecret} = process.env;
 const authenticateJWT = async (req, res, next) => {
     const token = req.cookies.token;
 
@@ -13,7 +13,7 @@ const authenticateJWT = async (req, res, next) => {
         });
     }
     else {
-        res.redirect('/auth/login')
+        res.redirect('/auth/login');
     }
 };
 

@@ -242,11 +242,11 @@ function allReviewsJoin() {
 }
 
 function moreDetails() {
-    window.location.href = '/moreDetails'
+    localStorage.setItem('ref', 'refMoreDetails');
+    window.location.href = '/accessToken'
 }
 
 function admin() {
     localStorage.setItem('ref', 'refAdmin');
     window.location.href = '/accessToken';
 }
-

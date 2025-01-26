@@ -81,5 +81,8 @@ function refs(){
     else if(ref === 'refFileInfo'){
         window.location.href = `/fileInfo/${userInfo.fileInfo}`;
     }
+    else if(ref === 'refProfile'){
+        window.location.href = `/profile/${userInfo.profileId}`;
+    }
 }
 refs();

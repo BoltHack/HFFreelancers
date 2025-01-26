@@ -71,8 +71,20 @@ class AdminController {
     }
     static onlyIpBanListAdmin = async (req, res, next) => {
         try{
+            const page = parseInt(req.query.page) || 1;
+            const limit = 10;
+            const skip = (page - 1) * limit;
+
+            const totalBanIpUsers = await BanIpListModel.countDocuments();
+            const banIpUsers = await BanIpListModel.find().skip(skip).limit(limit);
+
             const ips = await BanIpListModel.find();
-            return res.render('admin/onlyIpBanList', {ips});
+            return res.render('admin/onlyIpBanList', {
+                ips,
+                banIpUsers,
+                currentPage: page,
+                totalPages: Math.ceil(totalBanIpUsers / limit)
+            });
         }catch(err){
             next(err)
         }

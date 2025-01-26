@@ -8,7 +8,7 @@ function getData(){
     })
         .then(response => response.json())
         .then(data => {
-            let {user, image} = data;
+            let {user, image, aCode} = data;
             if (!userInfo.id || userInfo.id !== user.id || userInfo.name !== user.name || userInfo.profileImage !== `data:image/png;base64,${image}`){
                 localStorage.setItem('userInfo', JSON.stringify({
                     'id': user.id,
