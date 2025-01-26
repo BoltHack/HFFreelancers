@@ -6,6 +6,7 @@
     <title>HFFreelancers | Ошибка</title>
     <link rel="stylesheet" href="/stylesheets/error.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/back.css">
     <link rel="icon" type="image/png" href="/images/logo2.png">
 </head>
 <body>
@@ -21,7 +22,13 @@
         </div>
     </div>
 </header>
-<%- include('back.ejs') %>
+<div class="back" id="back" style="margin-top: -493px;">
+    <a href="/" class="color-btn">Главная</a>
+    <span id="pageName" style="display: flex; gap: 5px;">
+
+    </span>
+</div>
+<br>
 <div class="container">
     <div class="error-box">
         <h2>Возникла ошибка</h2>

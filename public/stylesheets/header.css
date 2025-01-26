@@ -399,29 +399,30 @@ html.lightTheme {
 
 
 
-.back{
-    position: absolute;
-    top: 15%;
-    left: 0;
-    display: flex;
-    gap: 5px;
-}
-.between{
-    color: rgba(98, 51, 185, 255);
-}
-.color-btn{
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-.color-btn:hover{
-    text-decoration: underline;
-}
-.lightTheme{
-    .color-btn{
-        color: #0d49d7;
-    }
-}
+/*.back{*/
+/*    margin-top: -5px;*/
+/*    !*position: absolute;*!*/
+/*    !*top: 15%;*!*/
+/*    !*left: 0;*!*/
+/*    display: flex;*/
+/*    gap: 5px;*/
+/*}*/
+/*.between{*/
+/*    color: rgba(98, 51, 185, 255);*/
+/*}*/
+/*.color-btn{*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.color-btn:hover{*/
+/*    text-decoration: underline;*/
+/*}*/
+/*.lightTheme{*/
+/*    .color-btn{*/
+/*        color: #0d49d7;*/
+/*    }*/
+/*}*/
 @media (max-width: 1500px){
     .theme{
         margin-left: 100px;

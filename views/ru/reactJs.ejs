@@ -9,13 +9,13 @@
 </head>
 <body>
 <%- include('header.ejs') %>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div>
         <% if (advertising && advertising.length) { %>
             <% if (advertising.length > 1) { %>
@@ -88,8 +88,8 @@
     <br>
     <br>
     <br>
-    <%- include('footer.ejs') %>
 </main>
+<%- include('footer.ejs') %>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const ads = document.querySelectorAll('.center-advertising');

@@ -7,7 +7,6 @@ async function start(){
         await mongoose.connect(MONGODB_URL, {
             serverSelectionTimeoutMS: 30000,
         });
-        console.log("База данных подключена...")
 
         mongoose.connection.on('connected', () => {
             console.log('Mongoose успешно подключился к MongoDB');
@@ -20,8 +19,9 @@ async function start(){
         mongoose.connection.on('disconnected', () => {
             console.log('Mongoose отключился от MongoDB');
         });
+        console.log("База данных подключена...");
     }catch (e) {
-        console.log('Ошибка подключения к базе данных:', e.message)
+        console.log('Ошибка подключения к базе данных:', e.message);
     }
 }
 
