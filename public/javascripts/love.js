@@ -246,9 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('ref', 'refFileInfo');
             fetch(`/viewSite/${dataInfo}`, {
                 method: "POST",
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem("token")
-                },
             })
             if (window.location.pathname.startsWith('/profile/')){
                 window.open('/accessToken', '_blank');
