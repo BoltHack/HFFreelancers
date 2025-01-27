@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </svg>
                             <span>Скачать</span>
                         </button>
-                    </form>
-                    `
+                    </form>`
     }
     else{
         downloadFile.innerHTML = `

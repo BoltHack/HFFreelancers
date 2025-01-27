@@ -418,13 +418,13 @@ class IndexController {
                 res.cookie('locale', locale, { httpOnly: true, maxAge: 10 * 365 * 24 * 60 * 60 * 1000  });
             }
 
-            if(!req.files || !req.files.image){
-                const errorMsg = locale === 'en' ? 'Failed to load changes.' : 'Не удалось загрузить изменения.';
+            if (!req.files.image.mimetype.startsWith('image/')) {
+                const errorMsg = locale === 'en' ? 'Only image files are allowed.' : 'Разрешены только файлы изображений.';
                 return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
             }
 
-            if (!req.files.image.mimetype.startsWith('image/')) {
-                const errorMsg = locale === 'en' ? 'Only image files are allowed.' : 'Разрешены только файлы изображений.';
+            if(!req.files || !req.files.image){
+                const errorMsg = locale === 'en' ? 'Failed to load changes.' : 'Не удалось загрузить изменения.';
                 return res.redirect(`/error?message=${encodeURIComponent(errorMsg)}`);
             }
 
@@ -487,7 +487,7 @@ class IndexController {
             console.error('Ошибка:', err);
             return res.redirect(`/error?message=${encodeURIComponent(err.message)}`);
             // res.status(500).json({ error: err.message });
-            next(err);
+            // next(err);
         }
     }
 
@@ -866,6 +866,23 @@ class IndexController {
         }
     }
 
+    static viewSite = async (req, res, next) => {
+        try{
+            const {id} = req.params;
+            const viewsSite = await WebsitesModel.findById(id);
+
+            await WebsitesModel.findByIdAndUpdate(id, {
+                $set: { views: (viewsSite.views || 0) + 1 }
+            });
+
+            res.status(200).json({message: "Элемент успешно сохранен!"})
+        }catch(err){
+            console.error('Ошибка:', err);
+            res.status(500).json({ error: err.message });
+            next(err);
+        }
+    }
+
     static manageCookieFiles = async (req, res) => {
         try {
             const {type} = req.params;
@@ -914,20 +931,11 @@ class IndexController {
             if (req.cookies['token']) {
                 await authenticateJWT(req, res, async () => {
                     const user = req.user;
-                    // const aCode = req.cookies['a_code'];
                     const getImage = await UsersModel.findById({ _id: user.id });
                     const image =  getImage.image;
                     res.json({user, image});
                 });
             }
-            // if (!req.cookies['a_code']){
-            //     const acceptCookies = req.cookies['acceptCookies'];
-            //     const aNewCode = {
-            //         acceptCookies: acceptCookies
-            //     };
-            //     const aCode = jwt.sign(aNewCode, access_code, {expiresIn: 10 * 365 * 24 * 60 * 60 * 1000});
-            //     return res.cookie('a_code', aCode, {httpOnly: true, secure: true, maxAge: 10 * 365 * 24 * 60 * 60 * 1000});
-            // }
         }catch (err){
             console.error('Ошибка:', err);
             res.status(500).json({error: err.message});

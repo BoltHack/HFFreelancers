@@ -59,8 +59,6 @@ document.addEventListener('DOMContentLoaded', function (){
             .then(response => response.json())
             .then(data => {
                 const ip = data.ip;
-                // document.cookie = `ip=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
-                // document.cookie = `ip=${encodeURIComponent(ip)}; max-age=${24 * 60 * 60}`;
 
                 fetch(`/auth/login/${ip}`, {
                     method: 'post',

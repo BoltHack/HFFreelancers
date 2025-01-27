@@ -2,7 +2,7 @@ const express = require('express');
 const {
     mainView, aboutUsView, rulesView, privacyPolicyView, sendReviewsMenuView, displayAllReviews, deleteUser,
     deleteReview, PersonalAreaView, changeImage, sendReview, getTokenView, moreDetailsView, youAreBannedView,
-    requestUnban, downloadFile, fileInfoView, changeLocal, changeLocalAuth, likeSite, dislikeSite, sendCommentsPost,
+    requestUnban, downloadFile, fileInfoView, changeLocal, changeLocalAuth, likeSite, dislikeSite, viewSite, sendCommentsPost,
     profileView, changeTheme, manageCookieFiles, sendContacts, deleteContacts, deleteImage, getData
 } = require('../controller/IndexController');
 const {
@@ -64,6 +64,7 @@ router.post('/changeLocalAuth/:id/:locale', changeLocalAuth);
 router.post('/changeTheme/:theme', changeTheme);
 router.post('/likeSite/:id', authenticateJWT, likeSite);
 router.post('/dislikeSite/:id', authenticateJWT, dislikeSite);
+router.post('/viewSite/:id', viewSite);
 router.post('/acceptCookies/:type', manageCookieFiles);
 router.post('/sendContacts/:id', sendContacts);
 router.post('/deleteContacts/:id', deleteContacts);

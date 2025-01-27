@@ -1,5 +1,9 @@
 function getData(){
     const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
+    const referrer = encodeURIComponent(document.referrer || 'http://localhost:3000');
+    document.cookie = `previousWebsite=${referrer}; max-age=${24 * 60 * 60}; path=/;`;
+
     fetch('/getData', {
         method: 'post',
         headers: {

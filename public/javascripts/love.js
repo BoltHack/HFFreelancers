@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const alreadyLove = document.querySelectorAll('.alreadyLove');
     const deleteFavoritesButton = document.querySelectorAll('.delete-favorites');
     const fileInfo = document.querySelectorAll('.fileInfo');
-    const local = localStorage.getItem('local');
 
     function checkLoveState() {
         loveButton.forEach(button => {
@@ -245,6 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
             userInfo.fileInfo = dataInfo;
             localStorage.setItem('userInfo', JSON.stringify(userInfo));
             localStorage.setItem('ref', 'refFileInfo');
+            fetch(`/viewSite/${dataInfo}`, {
+                method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("token")
+                },
+            })
             if (window.location.pathname.startsWith('/profile/')){
                 window.open('/accessToken', '_blank');
             }
