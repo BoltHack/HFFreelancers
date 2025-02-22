@@ -27,6 +27,7 @@ h2{
   background-color: black;
   opacity: 0.6;
   z-index: 3;
+  backdrop-filter: blur(10px);
 }
 .new-border{
   width: 400px;

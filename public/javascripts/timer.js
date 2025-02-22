@@ -93,7 +93,7 @@ function refreshStartTimer(duration) {
 
     if (token) {
         // localStorage.setItem('refreshTokenEndTime', endTime);
-        document.cookie = `refreshTokenEndTime=${endTime}; path=/;`;
+        document.cookie = `refreshTokenEndTime=${endTime}; max-age=${10 * 24 * 60 * 60}; path=/;`;
     }
 
     refreshUpdateTimer();

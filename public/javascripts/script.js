@@ -240,7 +240,7 @@ function deleteAccountMenu() {
 function leaveYourContacts() {
     const barrier = document.querySelector('.new-barrier');
     const border = document.getElementById('leaveYourContacts');
-    const close = document.getElementById('close');
+    const close = document.getElementById('close1');
 
     barrier.hidden = false;
     border.hidden = false;

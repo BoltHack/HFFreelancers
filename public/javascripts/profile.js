@@ -39,7 +39,7 @@ function profilePerms(){
 
     let changePasswordBtn = document.getElementById('changePasswordBtn');
     let changePassword = document.getElementById('changePassword');
-    let zoomImage = document.getElementById('zoomImage');
+    let close = document.getElementById('close');
     let zoomImageDiv = document.getElementById('zoomImageDiv');
     let userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
 
@@ -71,6 +71,11 @@ function profilePerms(){
         zoomImageDiv.hidden = true;
         userInfo.profileImage = `data:image/png;base64,${imageUser}`
         localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    })
+
+    close.addEventListener('click', () => {
+        document.body.removeChild(barrier);
+        changePassword.hidden = true;
     })
 
     cancelChangeBtn.addEventListener('click', () => {

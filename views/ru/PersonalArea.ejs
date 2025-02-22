@@ -102,6 +102,7 @@
             <div id="changePassword" hidden>
                 <div class="changePassword-section">
                     <div class="password-container">
+                        <b id="close" style="position: absolute; right: 10px; top: 10px; cursor:pointer; color: white">X</b>
                         <h1 style="color: white; text-align: center">Сменить пароль</h1>
                         <p><%= user._id %></p>
                         <form action="/changePassword/<%= user.id %>" method="POST">
@@ -204,6 +205,7 @@
     </div>
 
     <div class="leaveYourContacts" id="leaveYourContacts" hidden>
+        <b id="close1" style="position: absolute; right: 10px; top: 10px; cursor:pointer; color: white">X</b>
         <h1>Добавьте свои контакты</h1>
         <p>Оставьте ссылки на свои социальные сети или YouTube-канал, чтобы другие пользователи могли убедиться, что ваш отзыв настоящий.</p>
         <form action="/sendContacts/<%= user.id %>" method="POST" class="contact-form">
