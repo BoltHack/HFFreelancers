@@ -106,7 +106,7 @@ PASS='lknghiutynoliunf'
 
 В английской версии:
 
-![Снимок экрана 2025-05-12 144706](https://github.com/user-attachments/assets/0be1efce-2890-43de-93a3-727169aac705)
+![Снимок экрана 2025-05-12 145007](https://github.com/user-attachments/assets/52085976-4a45-4e55-ae8b-4fe6dd513e16)
 
 В русской версии:
 
