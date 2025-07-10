@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFFreelancers | All reviews</title>
+    <link rel="stylesheet" href="/stylesheets/allReviews.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+</head>
+<body>
+<%- include('header.ejs') %>
+<main>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+<div class="container">
+    <div class="reviews">
+        <h1>All reviews</h1>
+        <button onclick="checkTokenSendPreview()" class="send-reviews">Leave your review</button>
+    </div>
+    <div id="rInfo">
+        <% if (reviews.length > 0) { %>
+            <div class="r-container">
+                <% reviews.forEach(review => { %>
+                    <% if (review.review && review.review.length > 0) { %>
+                        <div class="r-info">
+                            <h3 class="r-name"><%= review.name %></h3>
+                            <img src="data:image/png;base64,<%= review.image %>" alt="profileImage" class="main-image">
+                            <p class="r-comment"><%= review.review %></p><br>
+                            <div class="grade-data">
+                                <div class="grade">
+                                    <% if (review.grade) {%>
+                                        <% if (review.grade === "1") { %>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (review.grade === "2") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (review.grade === "3") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (review.grade === "4") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (review.grade === "5") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                                <p class="r-date"><%= review.date %></p>
+                            </div>
+                            <a class="check-profile" style="cursor: pointer;" data-id="<%= review.id %>">View profile</a>
+                        </div>
+                    <% } %>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <h1>There are no reviews yet.</h1>
+        <% } %>
+    </div>
+</div>
+</main>
+<script src="/javascripts/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkProfile = document.querySelectorAll('.check-profile');
+        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
+        checkProfile.forEach(button => {
+            button.addEventListener('click', function (){
+                const dataId = this.getAttribute('data-id');
+                userInfo.profileId = dataId
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+                localStorage.setItem('ref', 'refProfile');
+                window.location.href = '/accessToken';
+            })
+        })
+    })
+</script>
+</body>
+</html>

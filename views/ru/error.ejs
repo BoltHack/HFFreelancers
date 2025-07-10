@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru" id="htmlTheme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFFreelancers | Ошибка</title>
+    <link rel="stylesheet" href="/stylesheets/error.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/back.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+</head>
+<body>
+<header>
+    <div class="container-logo">
+        <a href="/"><img src="../images/logo2.png" alt="Logo"></a>
+        <h2><a class="logo" href="/">𝓗𝓕𝓕𝓻𝓮𝓮𝓵𝓪𝓷𝓬𝓮𝓻𝓼</a></h2>
+        <div class="theme">
+            <label class="switch">
+                <input type="checkbox" id="theme">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</header>
+<div class="back" id="back" style="margin-top: -493px;">
+    <a href="/" class="color-btn">Главная</a>
+    <span id="pageName" style="display: flex; gap: 5px;">
+
+    </span>
+</div>
+<br>
+<div class="container">
+    <div class="error-box">
+        <h2>Возникла ошибка</h2>
+
+        <h4><%= message %></h4>
+        <a class="home-link" onclick="window.history.back();">Назад</a>
+    </div>
+</div>
+<script src="/javascripts/theme.js"></script>
+<script>
+    const pageName = document.getElementById('pageName');
+    pageName.innerHTML = `
+<a class="between"> > </a>
+<a class="other-color">Ошибка</a>`
+</script>
+</body>
+</html>

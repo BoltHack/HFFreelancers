@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFFreelancers | Home</title>
+    <link rel="stylesheet" href="/stylesheets/main2.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+</head>
+<body>
+<%- include('header.ejs') %>
+<main>
+    <br>
+    <div class="imagesPositions" id="home">
+        <%- include('carousel.ejs') %>
+        <div class="info">
+            <h1 class="freelance">𝓗𝓕𝓕𝓻𝓮𝓮𝓵𝓪𝓷𝓬𝓮𝓻𝓼</h1>
+            <p>Find the perfect website for your needs</p>
+            <p>or order your own!</p>
+            <button class="buy-button" onclick="checkTokenFunc()">
+                <span>Order a website</span>
+            </button>
+        </div>
+    </div>
+    <div class="br"></div>
+    <div class="about-container">
+        <div class="about-info">
+            <div class="about-padding">
+                <h2 class="font-weight">About Our Website</h2>
+                <p>HFFreelancers is your source for purchasing quality web developments!</p>
+                <p>We offer a wide selection of ready-made websites,</p>
+                <p>including front-end, back-end, and full-stack projects,</p>
+                <p>to meet the needs of any business or individual.</p>
+                <p>HFFreelance is not just a store of ready-made websites,</p>
+                <p>but a whole community of professional developers and clients,</p>
+                <p>striving for success in the web space.</p>
+                <p>We pride ourselves on our reputation as a reliable and quality provider of web developments</p>
+                <p>and strive to make the process of creating</p>
+                <p>and launching websites as simple and pleasant as possible for every client.</p>
+            </div>
+        </div>
+        <div class="data">
+            <div class="our-data">
+                <div class="our-data-padding">
+                    <h2 class="our-data-color">Our Email</h2>
+                    <p></p>
+                    <a href="mailto:hffreelancers@gmail.com" class="our-email"><h3 class="our-data-color">HFFreelancers@gmail.com</h3></a></div>
+            </div>
+            <div class="our-contact">
+                <div class="our-contact-padding">
+                    <h2 class="our-contact-color">Our Phone</h2>
+                    <a href="tel:циферки" class="our-phone"><h3 class="our-contact-color">+7 123 456 78 90</h3></a>                </div>
+            </div>
+        </div>
+    </div>
+    <div id="services">
+        <br>
+        <br>
+    </div>
+    <div class="content">
+        <div class="services-container">
+            <h2 style="color: #e7bc91; font-weight: 1000; margin-top: 70px;">Our services</h2>
+            <div style="display: flex; margin-left: 100px; gap: 30px; margin-top: 20px;">
+                <div style="word-break: break-word; max-width: 400px;">
+                    <div class="service">
+                        <h3 style="color: #f3d5b5">Website Design</h3>
+                        <p>We create unique and creative designs that attract attention and enhance the user experience.</p>
+                    </div>
+                    <div class="service">
+                        <h3 style="color: #f3d5b5">Website Development</h3>
+                        <p>We develop modern, responsive, and functional websites using the latest technologies.</p>
+                    </div>
+                    <div class="service">
+                        <h3 style="color: #f3d5b5">E-commerce</h3>
+                        <p>We create effective online stores, helping your business grow and attract new customers.</p>
+                    </div>
+                </div>
+
+                <div style="word-break: break-word; width: 400px;">
+                    <div class="service">
+                        <h3 style="color: #f3d5b5">Custom Web Applications</h3>
+                        <p>We develop custom web applications to meet your unique needs and goals.</p>
+                    </div>
+                    <div class="service">
+                        <h3 style="color: #f3d5b5">Search Engine Optimization (SEO)</h3>
+                        <p>We optimize your website for search engines to increase its visibility and attract more traffic.</p>
+                    </div>
+                    <div class="service">
+                        <h3 style="color: #f3d5b5">Script Writing</h3>
+                        <p>We create high-quality and reliable scripts for your website, enhancing its functionality and performance.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="position: relative; left: 80%; top: -260px;">
+                <img src="/images/terms.png" style="width: 200px; height: 200px;">
+                <br>
+                <button class="order-btn" onclick="moreDetails()">Learn More</button>
+            </div>
+        </div>
+    </div>
+    <div id="reviews">
+        <br>
+        <br>
+    </div>
+    <h1 class="reviews-gradient">Customer reviews</h1>
+    <p class="info-text">
+        Check out the many positive reviews from our satisfied clients who share their experiences with us.
+        We are proud of the quality of our work and always strive to improve our service.
+    </p>
+    <button id="moreReviews" class="moreReviews" onclick="allReviewsJoin()">Go to reviews</button>
+</main>
+<%- include('footer.ejs') %>
+</body>
+</html>

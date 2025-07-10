@@ -1,0 +1,127 @@
+<style>
+    .line{
+        border-top: 1px solid #666;
+        position: relative;
+        /*margin-left: 200px;*/
+        margin-left: 0;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        /*width: 72%;*/
+        width: 100%;
+    }
+    footer {
+        background-color: #16171d;
+        /*background-color: #43655a;*/
+        /*background-image: url("../images/programming.jpg");*/
+        color: white;
+        padding: 20px 0;
+        width: 100%;
+        margin-bottom: auto;
+        position: relative;
+        left: 0;
+        bottom: 0;
+    }
+    footer h3{
+        color: #f3d5b5
+    }
+    footer a {
+        color: #ECF1FD;
+        text-decoration: none;
+    }
+    footer a:hover{
+        color: #F2F2F2;
+        text-decoration: underline;
+    }
+    footer p {
+        color: #F2F2F2
+    }
+    .footer-links {
+        display: flex;
+        margin: 20px 200px;
+    }
+    .footer-our-company{
+        width: 350px;
+        flex-wrap: wrap;
+    }
+    .footer-info{
+        display: grid;
+        gap: 10px;
+        margin-left: 50px;
+        margin-top: -14.5px;
+    }
+    .footer-contacts{
+        display: grid;
+        gap: 10px;
+        margin-left: 50px;
+        margin-top: -14.5px;
+    }
+    .footer-links a {
+        margin-right: 20px;
+    }
+
+    .footer-links a:last-child {
+        margin-right: 0;
+    }
+    .company-logo{
+        width: 30px;
+        height: 30px;
+    }
+    .company-name{
+        margin-left: 200px;
+        /*color: #6c757d;*/
+        color: white;
+    }
+    .contact-us{
+        display: grid;
+        gap: 10px;
+        margin-left: 50px;
+        margin-top: -14.5px;
+    }
+</style>
+
+<footer id="footerSection">
+    <div class="footer-container">
+        <div class="footer-links">
+            <div class="footer-our-company">
+                <div style="display: flex">
+                    <img src="../images/logo2.png" class="company-logo">
+                    <h3 style="margin: 5px 10px;">HFFreelance</h3>
+                </div>
+                <p style="color: white;">Creating modern websites to generate new income sources, change careers, or advance professionally.</p>
+            </div>
+            <div class="footer-info">
+                <h3>Information</h3>
+                <a href="/aboutUs">About Us</a>
+                <a href="/rules">Terms of Use</a>
+                <a href="/privacyPolicy">Privacy Policy</a>
+            </div>
+            <% if (links.length) { %>
+                <div class="footer-contacts">
+                    <h3>Social networks</h3>
+                    <% links.forEach(linksItem => { %>
+                        <% if(linksItem.vk) {%>
+                            <a href="<%= linksItem.vk %>" target="_blank">VK</a>
+                        <%}%>
+                        <% if(linksItem.discord) {%>
+                            <a href="<%= linksItem.discord %>" target="_blank">Discord</a>
+                        <%}%>
+                        <% if(linksItem.instagram) {%>
+                            <a href="<%= linksItem.instagram %>" target="_blank">instagram</a>
+                        <%}%>
+                        <% if(linksItem.facebook) {%>
+                            <a href="<%= linksItem.facebook %>" target="_blank">facebook</a>
+                        <%}%>
+                    <% }); %>
+                </div>
+            <%}%>
+            <div class="contact-us">
+                <h3>Contact us</h3>
+                <a href="mailto:hffreelancers@gmail.com" style="color: #b7b4be">HFFreelancers@gmail.com</a>
+                <a href="tel:циферки" style="color: #b7b4be">+7 123 456 78 90</a>
+            </div>
+        </div>
+        <div class="line"></div>
+        <p class="company-name" style="color: white;">&copy; 2024 HFFreelance. All rights reserved. Full or partial copying of the site is prohibited.</p>
+    </div>
+</footer>
+<script src="/javascripts/script.js"></script>

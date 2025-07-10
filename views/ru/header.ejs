@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru" id="htmlTheme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/alert.css">
+<script>
+    const acceptCookies = `<%= acceptCookies %>`
+</script>
+    <noscript>
+        <style>
+            body{
+                overflow: hidden;
+            }
+            header{
+                display: none;
+            }
+        </style>
+        <div class="header-barrier"></div>
+        <div class="header-border">
+            <h1>JavaScript отключён!</h1>
+            <p>Для корректной работы сайта включите JavaScript в настройках вашего браузера. Вот как это сделать:</p>
+            <ul style="text-align: left; display: inline-block;">
+                <li><strong>Google Chrome:</strong> Откройте настройки → Конфиденциальность и безопасность → Настройки сайта → JavaScript → Включите.</li>
+                <li><strong>Mozilla Firefox:</strong> Введите <code>about:config</code> в адресной строке → Найдите <code>javascript.enabled</code> → Установите в <code>true</code>.</li>
+                <li><strong>Safari:</strong> Откройте настройки → Безопасность → Включите опцию JavaScript.</li>
+                <li><strong>Microsoft Edge:</strong> Перейдите в параметры → Файлы cookie и разрешения сайта → JavaScript → Включите.</li>
+                <li style="text-align: center;"><a href="/">Обновите страницу</a> после того, как включите JavaScript.</li>
+            </ul>
+            <p style="margin-top: -10px;">Если после всех действий не удалось решить проблему, обратитеть в <a href="mailto:hffreelancers@gmail.com">поддержку.</a></p>
+            <br>
+        </div>
+    </noscript>
+</head>
+<body>
+<header>
+    <div class="container-logo">
+        <a href="/"><img src="../images/logo2.png" alt="Logo"></a>
+        <h2><a class="logo" href="/">𝓗𝓕𝓕𝓻𝓮𝓮𝓵𝓪𝓷𝓬𝓮𝓻𝓼</a></h2>
+        <div class="theme">
+            <label class="switch">
+                <input type="checkbox" id="theme">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div id="headerSection">
+        <ul class="get">
+            <li id="account">Мой аккаунт</li>
+            <img src="" id="account-img" onclick="PersonalAreaJoin()">
+            <li><a href="#services" class="ha">Услуги</a></li>
+            <li><a href="#footerSection" class="ha">Контакты</a></li>
+            <details>
+                <summary>Бесплатное</summary>
+                <div>
+                    <ul id="details">
+                        <div style="display: block">
+                            <li><a onclick="htmlCssJs()">html, css, js</a></li>
+                            <li><a onclick="javascript()">javascript</a></li>
+                            <li><a onclick="fullstack()">fullstack</a></li>
+                            <li><a onclick="favoritesJoin()">Избранное</a></li>
+                        </div>
+                        <div style="display: block">
+                            <li><a onclick="reactJs()">reactJs</a></li>
+                            <li><a onclick="nodeJs()">nodeJs</a></li>
+                            <li><a onclick="allSites()">Все типы</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </details>
+        </ul>
+    </div>
+    <div id="types">
+        <ul class="web-types">
+            <li><a class="types" id="favoritesHeader" onclick="favoritesJoin()" style="cursor: pointer">Избранное</a></li>
+            <details>
+                <summary>Типы</summary>
+                <div>
+                    <ul style="right: 4.3%;">
+                        <div style="display: block">
+                            <li><a id="htmlCssJsColor" onclick="htmlCssJs()">html, css, js</a></li>
+                            <li><a id="javascriptColor" onclick="javascript()">javascript</a></li>
+                            <li><a id="fullstackColor" onclick="fullstack()">fullstack</a></li>
+                            <li><a id="favoritesColor" onclick="favoritesJoin()">Избранное</a></li>
+                        </div>
+                        <div style="display: block">
+                            <li><a id="reactJsColor" onclick="reactJs()">reactJs</a></li>
+                            <li><a id="nodeJsColor" onclick="nodeJs()">nodeJs</a></li>
+                            <li><a id="allSitesColor" onclick="allSites()">Все типы</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </details>
+        </ul>
+    </div>
+    <div class="dropdown" id="local" style="position: absolute; top: 15%; right: 1%;">
+        <div class="dropdown-title">
+            <img src="/images/russia-flag.png" style="width: 40px; height: 40px; border-radius: 50%;">
+        </div>
+        <div class="dropdown-content">
+            <button type="submit" style="background: none; border: none; padding: 0;" onclick="localsFEn()">
+                <img src="/images/english-flag.jpg" style="width: 40px; height: 40px; cursor:pointer; border-radius: 50%;">
+            </button>
+        </div>
+    </div>
+</header>
+<%- include('back.ejs') %>
+<script src="/javascripts/timer.js"></script>
+<script src="/javascripts/header.js"></script>
+<script src="/javascripts/paths.js"></script>
+<script src="/javascripts/local.js"></script>
+<script src="/javascripts/warning.js"></script>
+<script src="/javascripts/theme.js"></script>
+<script src="/javascripts/getData.js"></script>
+</body>
+</html>

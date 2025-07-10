@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            justify-content: center;
+        }
+        .ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px auto;
+            justify-content: center;
+            display: grid;
+            width: 1000px;
+            gap: 20px;
+        }
+        .li {
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        .li div.user-info,
+        .li div.change-password {
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+        }
+        p {
+            margin: 5px 0 4px 0;
+        }
+        .img {
+            max-width: 100px;
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .deleteAccountBtn{
+            background-color: #761c19;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            width: 150px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            display: inline-block;
+            margin: 0;
+        }
+        .change-password {
+            padding: 8px;
+            margin-top: 8px;
+        }
+        .change-password h2 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+        input[type="password"] {
+            width: 400px;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="text"] {
+            width: 400px;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .users-not-found {
+            text-align: center;
+            font-size: 1.2em;
+            color: #777;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .review-delete {
+            background-color: #155724;
+            color: white;
+            border: none;
+            padding: 2px 5px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .review-delete:hover {
+            background-color: #3b7f3a;
+        }
+        .search {
+            text-align: center;
+            margin: auto 0;
+        }
+        .br {
+            margin-top: 150px;
+        }
+        .have-review {
+            width: 200px;
+            word-wrap: break-word;
+        }
+        .ban-btn {
+            background-color: #d90429;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: 3px;
+        }
+        .ban-btn:hover {
+            background-color: #ef233c;
+        }
+
+        .unban-btn {
+            background-color: #344e41;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: 3px;
+        }
+        .unban-btn:hover {
+            background-color: #3a5a40;
+        }
+        .dop-pos{
+            text-align: center;
+            margin: auto 0;
+        }
+        .only-banned-users, .add-ip-to-the-list{
+            color: #2a47cb;
+        }
+        .request-ban-users, .only-ip-banned-users{
+            color: #2a47cb;
+            margin-left: 20px;
+        }
+        .only-banned-users:hover, .request-ban-users:hover, .only-ip-banned-users:hover, .add-ip-to-the-list:hover{
+            text-decoration: underline;
+            text-decoration-color: black;
+        }
+        .deleteAccountMenu{
+            width: 350px;
+            height: 180px;
+            background-color: #212529;
+            border-radius: 10px;
+            z-index: 4;
+            opacity: 1;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .new-barrier{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: black;
+            opacity: 0.6;
+            z-index: 3;
+        }
+        .no-btn {
+            background: none;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            width: 80px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .yes-btn{
+            background: none;
+            color: #90e0ef;
+            border: none;
+            padding: 10px 20px;
+            width: 80px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .no-btn:hover{
+            background-color: #6c757d;
+        }
+        .yes-btn:hover{
+            background-color: #118ab2;
+        }
+        .yes-or-no{
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+<%- include('adminHeader.ejs') %>
+<div class="br"></div>
+<div class="search">
+    <h2>Список пользователей</h2>
+    <input type="text" id="searchInput" placeholder="Поиск по id или email">
+</div>
+<div class="dop-pos">
+    <a href="/admin/banList" class="only-banned-users">Заблокированные пользователи</a>
+    <a href="/admin/banIpList" class="only-ip-banned-users">Заблокированные по ip пользователи</a>
+    <a href="/admin/requestUnban" class="request-ban-users">Заявки на разбан</a>
+</div>
+<br>
+<div class="dop-pos">
+    <a href="/admin/addIpToTheList" class="add-ip-to-the-list">Добавить ip-адрес в список блокировки</a>
+</div>
+<ul class="ul" id="userList">
+    <% if (users && users.length) { %>
+        <% users.forEach(user => { %>
+            <li class="li">
+                <div class="user-info">
+                    <p class="user-id">id: <%= user._id %></p>
+                    <p>Имя: <%= user.name %></p>
+                    <p class="user-email">Эл. Адрес: <%= user.email %></p>
+                    <p>Дата регистрации: <%= user.registerDate %></p>
+                    <% if (user.reviews && user.reviews.length > 0) { %>
+                        <% user.reviews.forEach(review => { %>
+                            <div style="display: flex; gap: 10px;">
+                                <div class="have-review">
+                                    <p>Отзыв: <%= review.review %></p>
+                                </div>
+                                <form action="/admin/deleteReviewsAdmin/<%= user._id %>" method="POST">
+                                    <button class="review-delete">Удалить отзыв</button>
+                                </form>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p>Отзыв: Отсутствует</p>
+                    <% } %>
+                    <p>Язык: <%= user.locale %></p>
+                    <p>Роль: <%= user.role %></p>
+                    <div style="display: flex; gap: 5px;">
+                        <p>Ip-адрес: <%= user.ip %></p>
+                        <% if (user.banned[0].banIp === true) {%>
+                            <p>/</p>
+                            <p>Заблокирован</p>
+                        <%}%>
+                    </div>
+                    <% if (user.banned && user.banned.length > 0) { %>
+                        <% if (user.banned[0].banType === false) { %>
+                            <div style="display: flex; gap: 10px;">
+                                <form action="/admin/banMenu/<%= user._id %>" method="GET">
+                                    <button class="ban-btn banMenuClick">Заблокировать</button>
+                                </form>
+                            </div>
+                        <% } else { %>
+                            <div style="display: flex; gap: 10px;">
+                                <p>Пользователь забанен</p>
+                                <% if (user.banned[0].banIp === true) {%>
+                                    <form action="/admin/playerUnbanIp/<%= user._id %>/<%= user.ip %>" method="POST">
+                                        <button class="unban-btn">Разблокировать ip</button>
+                                    </form>
+                                <%} else {%>
+                                    <form action="/admin/playerUnban/<%= user._id %>" method="POST">
+                                        <button class="unban-btn">Разблокировать</button>
+                                    </form>
+                                <%}%>
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <p>Заблокирован</p>
+                    <% } %>
+                    <img src="data:image/jpeg;base64,<%= user.image %>" alt="User Image" class="img">
+                    <br>
+                    <button class="deleteAccountBtn" data-id="<%= user._id %>">Удалить аккаунт</button>
+                </div>
+                <div class="change-password">
+                    <h2>Сменить пароль пользователю</h2>
+                    <form action="/admin/changePasswordAdmin/<%= user._id %>" method="POST">
+                        <input type="password" name="password" placeholder="Новый пароль" minlength="6" maxlength="50" required>
+                        <input type="password" name="confirmPassword" placeholder="Повтор пароля" minlength="6" maxlength="50" required><br>
+                        <button class="button">Сменить пароль</button>
+                    </form>
+                </div>
+                <div id="deleteMenu-<%= user._id %>" class="deleteAccountMenu" hidden>
+                    <p style="text-align: center; color: white; margin: 30px 0; padding: 10px;">Удалить аккаунт <%= user._id %>?</p>
+                    <div class="yes-or-no">
+                        <button class="no-btn" id="closeBtn-<%= user._id %>">Нет</button>
+                        <form action="/admin/deleteUserAdmin/<%= user._id %>" method="POST">
+                            <button class="yes-btn">Да</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        <% }) %>
+    <% } else { %>
+            <br>
+            <br>
+            <br>
+            <br>
+        <p class="users-not-found">Пользователей не найдено.</p>
+    <% } %>
+</ul>
+<div class="new-barrier" hidden></div>
+<%- include('../pagination.ejs') %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const userList = document.getElementById('userList');
+        const users = userList.getElementsByClassName('li');
+
+        Array.from(users).forEach(user => {
+            const userId = user.querySelector('.user-id').textContent.toLowerCase();
+            const userEmail = user.querySelector('.user-email').textContent.toLowerCase();
+            if (userId.includes(searchValue) || userEmail.includes(searchValue)) {
+                user.style.display = '';
+            }
+            else {
+                user.style.display = 'none';
+            }
+        });
+    });
+
+</script>
+<script src="/javascripts/adminScript.js"></script>
+</body>
+</html>

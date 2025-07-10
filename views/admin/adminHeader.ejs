@@ -1,0 +1,137 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    header{
+        width: 100%;
+        height: 80px;
+        background: rgb(32,30,32);
+        background: linear-gradient(184deg, rgba(32,30,32,1) 54%, rgba(16,16,17,1) 76%);
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        transition: top 0.3s;
+    }
+    img {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+    }
+    .container-logo{
+        display: flex;
+        padding: 3px;
+        z-index: 2;
+        margin: 5px 100px;
+    }
+    .logo{
+        color: #21f0df;
+        font-weight: 1000;
+        margin: 10px;
+        position: absolute;
+        top: 12%;
+    }
+    .get{
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 1%;
+        right: 10%;
+    }
+    #headerSection li{
+        margin: 20px 10px;
+        list-style-type: none;
+        background: none;
+        border: none;
+    }
+    .ha{
+        background: none;
+        text-decoration: none;
+        color: #fff;
+    }
+    .ha:hover{
+        color: #a2a8d3;
+    }
+    a{
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .new-barrier{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: black;
+        opacity: 0.6;
+        z-index: 3;
+    }
+    .new-border{
+        width: 600px;
+        height: 500px;
+        background-color: #f4f1de;
+        border-radius: 10px;
+        z-index: 4;
+        opacity: 1;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .back{
+        position: absolute;
+        top: 15%;
+        left: 0;
+        display: flex;
+        gap: 5px;
+    }
+    .between{
+        color: black;
+    }
+    .color-btn{
+        color: #0d49d7;
+        text-decoration: none;
+    }
+    .color-btn:hover{
+        text-decoration: underline;
+    }
+    @media (max-width: 900px) {
+        .ha{
+            display: none;
+        }
+        .logo{
+            display: none;
+        }
+    }
+</style>
+<body>
+<header>
+    <div class="container-logo">
+        <a href="/"><img src="../../images/logo2.png"></a>
+        <h2><a class="logo" href="/">𝓗𝓕𝓕𝓻𝓮𝓮𝓵𝓪𝓷𝓬𝓮𝓻𝓼</a></h2>
+    </div>
+    <div id="headerSection">
+        <ul class="get">
+            <li><a href="allUsers" class="ha" id="allUsers">Список пользователей</a></li>
+            <li><a href="allNews" class="ha" id="allNews">Лента новостей</a></li>
+            <li><a href="sendLinks" class="ha" id="sendLinks">Обновить ссылки</a></li>
+            <li><a href="allWebsites" class="ha" id="allWebsites">Мои сайты</a></li>
+            <li><a href="allAdvertising" class="ha" id="allAdvertising">Реклама</a></li>
+        </ul>
+    </div>
+</header>
+<div class="back">
+    <br><a href="/" class="color-btn">Главная</a>
+    <a class="between">/</a>
+    <a href="#PersonalArea" class="color-btn" onclick="PersonalAreaJoin()">Личный кабинет</a>
+</div>
+<script src="/javascripts/timer.js"></script>
+<script src="/javascripts/adminScript.js"></script>
+<script>
+    function PersonalAreaJoin(){
+        localStorage.setItem('ref', 'refPersonalArea');
+        window.location.href = '/accessToken';
+    }
+</script>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            justify-content: center;
+        }
+        .ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px auto;
+            justify-content: center;
+            display: grid;
+            width: 1000px;
+            gap: 20px;
+        }
+        .li {
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+        }
+        p {
+            margin: 5px 0 4px 0;
+        }
+        .img {
+            max-width: 100px;
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            display: inline-block;
+            margin: 0;
+        }
+        .change-password {
+            padding: 8px;
+            margin-top: 8px;
+        }
+        .change-password h2 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+        input[type="password"] {
+            width: 400px;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="text"] {
+            width: 400px;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .users-not-found {
+            text-align: center;
+            font-size: 1.2em;
+            color: #777;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .review-delete {
+            background-color: #155724;
+            color: white;
+            border: none;
+            padding: 2px 5px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .review-delete:hover {
+            background-color: #3b7f3a;
+        }
+        .search{
+            text-align: center;
+            margin: auto 0;
+        }
+        .br{
+            margin-top: 150px;
+        }
+        .ban-btn {
+            background-color: #d90429;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: 3px;
+        }
+        .ban-btn:hover {
+            background-color: #ef233c;
+        }
+
+        .unban-btn {
+            background-color: #344e41;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: 3px;
+        }
+        .unban-btn:hover {
+            background-color: #3a5a40;
+        }
+        .description, .reason, .have-review{
+            width: 400px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+<%- include('adminHeader.ejs') %>
+<div class="br"></div>
+<div class="search">
+    <h2>Список пользователей</h2>
+    <input type="text" id="searchInput" placeholder="Поиск по id или email">
+</div>
+<ul class="ul" id="userList">
+    <% if (users && users.length) { %>
+        <% users.forEach(user => { %>
+            <li class="li">
+                <div class="user-info">
+                    <p class="user-id">id: <%= user._id %></p>
+                    <p class="user-email">Эл. Адрес: <%= user.email %></p>
+                    <% if (user.banned[0].banIp) {%>
+                        <p class="user-banType">Тип бана: По ip-адресу</p>
+                    <%} else {%>
+                        <p class="user-banType">Тип бана: Обычный</p>
+                    <%}%>
+                    <br>
+                    <p>Автор бана: <%= user.banned[0].author[0].authorName %> | <%= user.banned[0].author[0].id %></p>
+                    <p>Дата блокировки: <%= user.banned[0].date %></p>
+                    <br>
+                    <p class="reason">Забанен по причине: <%= user.banned[0].reason %></p>
+                    <br>
+                    <% if(user.banned && user.banned[0].description) {%>
+                        <p class="description">Доп. инфа: <%= user.banned[0].description %></p>
+                    <%} else {%>
+                        <p>Доп. инфа: Отсутствует</p>
+                    <%}%>
+                    <br>
+                    <% if (user.requestUnban && user.requestUnban.length > 0) { %>
+                        <% user.requestUnban.forEach(requestMessage => { %>
+                            <div style="display: flex; gap: 10px;">
+                                <div class="have-review">
+                                    <p>Заявка: <%= requestMessage.message %></p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <% if (user.banned[0].banIp === true) {%>
+                                    <form action="/admin/playerUnbanIp/<%= user._id %>/<%= user.ip %>" method="POST">
+                                        <button class="unban-btn">Разблокировать ip</button>
+                                    </form>
+                                <%} else {%>
+                                        <form action="/admin/playerUnban/<%= user._id %>" method="POST">
+                                            <button class="unban-btn">Разблокировать</button>
+                                        </form>
+                                    <%}%>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </li>
+        <% }) %>
+    <% } else { %>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p class="users-not-found">Пользователей не найдено.</p>
+    <% } %>
+</ul>
+<%- include('../pagination.ejs') %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const userList = document.getElementById('userList');
+        const users = userList.getElementsByClassName('li');
+
+        Array.from(users).forEach(user => {
+            const userId = user.querySelector('.user-id').textContent.toLowerCase();
+            const userEmail = user.querySelector('.user-email').textContent.toLowerCase();
+            if (userId.includes(searchValue) || userEmail.includes(searchValue)) {
+                user.style.display = '';
+            }
+            else {
+                user.style.display = 'none';
+            }
+        });
+    });
+</script>
+<script src="/javascripts/adminScript.js"></script>
+</body>
+</html>

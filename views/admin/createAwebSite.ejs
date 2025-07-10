@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .web-container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .radio-group label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        button[type="submit"] {
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<%- include('adminHeader.ejs') %>
+<main>
+    <div class="web-container">
+        <h2>Выложите сайт</h2>
+        <form action="/admin/createAnewWebsite" method="POST" id="newsForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Название:</label>
+                <input type="text" id="title" name="title" placeholder="Введите название" maxlength="20" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Описание:</label>
+                <textarea id="description" name="description" placeholder="Введите описание" maxlength="500" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="fileImg">Изображение:</label>
+                <input type="file" id="fileImg" name="fileImg" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fileUpload">Файл:</label>
+                <input type="file" id="fileUpload" name="fileUpload" required>
+            </div>
+
+            <select name="siteType" required>
+                <option value="html-css">html css</option>
+                <option value="html-css-javascript">html css javascript</option>
+                <option value="javascript">javascript</option>
+                <option value="nodeJs">nodeJs</option>
+                <option value="reactJs">reactJs</option>
+                <option value="fullstack">fullstack</option>
+            </select>
+
+            <button type="submit">Выложить</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

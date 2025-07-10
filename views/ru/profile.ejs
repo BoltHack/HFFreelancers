@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль <%= profile.name %></title>
+    <link rel="stylesheet" href="/stylesheets/PersonalArea.css">
+    <link rel="stylesheet" href="/stylesheets/alert.css">
+    <link rel="stylesheet" href="/stylesheets/websites.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+</head>
+<script>
+    const profileName = "<%= profile.name %>";
+</script>
+<body>
+<%- include('header.ejs') %>
+<main>
+    <div class="pers-container">
+        <aside class="sidebar">
+            <h4>Информация</h4>
+            <ul>
+                <li id="profileMenu" style="background-color: #34495e; cursor:pointer;"><a>Профиль</a></li>
+                <li id="contactsMenu" style="cursor:pointer;"><a>Контакты</a></li>
+                <li id="favoritesMenu" style="cursor:pointer;"><a>Избранное</a></li>
+                <br>
+                <h4>Другое</h4>
+                <li><a href="/">В главное меню</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section id="profile" class="section">
+                <% if (profile && profile.id) { %>
+                    <h3 class="user-profile">Профиль пользователя <%= profile.name %> </h3>
+                    <div class="profile-info">
+                        <img src="data:image/png;base64,<%= profile.image %>" class="profile-pic" id="userImage" style="cursor: pointer">
+                        <div class="zoomImageDiv" id="zoomImageDiv" hidden>
+                            <img src="data:image/png;base64,<%= profile.image %>" class="zoomImage" id="zoomImage">
+                        </div>
+                        <div class="pers-info">
+                            <h2><%= profile.name %></h2>
+                            <p>Дата регистрации: <%= profile.registerDate %></p>
+                        </div>
+                    </div>
+                <% } %>
+            </section>
+
+            <div class="profile-data" id="profileData">
+                <div id="profileReview">
+                    <h3>Отзыв</h3>
+                    <% if(profile && profile.reviews && profile.reviews.length > 0 && profile.reviews[0].review) {%>
+                        <div>
+                            <div style="text-align: center">
+                                <p class="profile-review"><%= profile.reviews[0].review %></p>
+                            </div>
+                            <div class="grade-data">
+                                <div class="grade">
+                                    <% if (profile.reviews[0].grade) {%>
+                                        <% if (profile.reviews[0].grade === "1") { %>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (profile.reviews[0].grade === "2") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (profile.reviews[0].grade === "3") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (profile.reviews[0].grade === "4") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                        <% if (profile.reviews[0].grade === "5") { %>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                            <p>&#11088;</p>
+                                        <% } %>
+                                    <% } else { %>
+                                        <br>
+                                    <%}%>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    <% } else {%>
+                        <p class="no-review">Пользователь не оставлял никаких отзывов.</p>
+                        <br>
+                    <%}%>
+                </div>
+
+                <section class="contacts" id="profileContacts" hidden>
+                    <h2 style="text-align: center">Контакты</h2>
+                    <div class="contact-items" style="text-align: center">
+                        <% if (profile.contacts && profile.contacts.length > 0) {%>
+                            <% if (profile.contacts[0].youtube ) {%>
+                                <a href="<%= profile.contacts[0].youtube %>" target="_blank"><%= profile.contacts[0].youtube %></a>
+                            <%}%>
+                            <% if (profile.contacts[0].vk) {%>
+                                <a href="<%= profile.contacts[0].vk %>" target="_blank"><%= profile.contacts[0].vk %></a>
+                            <%}%>
+                        <%} else {%>
+                            <p class="no-contacts">Пользователь не оставил контактов для связи.</p>
+                        <%}%>
+                        <br>
+                    </div>
+                </section>
+
+                <div id="profileFavorites" hidden>
+                    <div id="favorites-container">
+                        <ul class="ul">
+                            <% if (favorites && favorites.length > 0) { %>
+                                <% favorites.forEach(favorite => { %>
+                                    <li class="project" style="width: 350px;">
+                                        <img src="data:image/jpeg;base64,<%= favorite.fileImg %>" class="img">
+                                        <div class="favorite-info">
+                                            <p><%= favorite.title %></p>
+                                            <p>Тип: <%= favorite.siteType %></p>
+                                            <div style="display: flex; gap: 10px; margin: auto 0;">
+                                                <button class="button fileInfo" data-info="<%= favorite._id %>">Посмотреть</button>
+                                                <div class="download" id="download" data-download="<%= favorite._id %>">
+
+                                                </div>
+                                                <div>
+                                                    <img src="/images/love.png" class="love" id="love-<%= favorite._id %>" data-id="<%= favorite._id %>" data-title="<%= favorite.title %>">
+                                                    <div id="load-<%= favorite._id %>" hidden>
+                                                        <div class="spinner center">
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                            <div class="spinner-blade"></div>
+                                                        </div>
+                                                    </div>
+                                                    <img src="/images/alreadyLove.png" class="alreadyLove" id="alreadyLove-<%= favorite._id %>" data-id="<%= favorite._id %>" data-title="<%= favorite.title %>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <% }); %>
+                            <% } else { %>
+                                <p class="no-favorites">Нет избранных элементов.</p>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="new-barrier" hidden></div>
+</main>
+<script src="/javascripts/love.js"></script>
+<script src="/javascripts/usersProfile.js"></script>
+<script src="/javascripts/alert.js"></script>
+</body>
+</html>
+

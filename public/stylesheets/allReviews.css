@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #212121;
+}
+
+.container {
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+    /*background-color: #313338;*/
+    background-color: #16171d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #f3d5b5;
+}
+
+.review h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.review p {
+    margin: 10px 0 0;
+    color: #777;
+    line-height: 1.6;
+}
+.r-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    gap: 50px;
+    max-width: 970px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.r-info{
+    padding: 20px;
+    text-align: center;
+    background-color: #212121;
+    width: 250px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.r-comment {
+    color: #e5e5e5;
+    word-wrap: break-word;
+}
+.send-reviews{
+    background-color: #468faf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.send-reviews:hover{
+    background-color: #012a4a;
+}
+.r-name{
+    color: #8ecae6;
+}
+.main-image{
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+}
+.grade{
+    display: flex;
+    justify-content: center;
+}
+.grade-data{
+    display: block;
+    gap: 5px;
+    justify-content: center;
+}
+.check-profile{
+    color: #219ebc;
+}
+.check-profile:hover{
+    color: #8ecae6;
+}
+.r-date{
+    color: #e5e5e5;
+}
+.lightTheme{
+    .container{
+        background-color: #fff;
+    }
+    h1{
+        color: black;
+    }
+    .r-info{
+        background-color: #fff;
+    }
+    .r-info h3{
+        color: black;
+    }
+    .r-comment{
+        color: #666;
+    }
+    .r-date{
+        color: black;
+    }
+    background-color: #ECF1FD;
+}

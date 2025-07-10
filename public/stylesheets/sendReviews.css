@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #212121;
+    margin: 0;
+    padding: 0;
+}
+
+.review-container {
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #313338;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-container h1, .review-container h2 {
+    text-align: center;
+    color: #f3d5b5;
+}
+
+.review-container form {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #313338;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #212121;
+    color: white
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+#message{
+    min-height: 100px;
+    max-height: 300px;
+    min-width: 400px;
+    max-width: 400px;
+}
+.grade-container{
+    position: relative;
+    top: 5%;
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+.grade-container p{
+    color: white;
+}
+#grade{
+    width: 100px;
+    height: 20px;
+    background-color: #212121;
+    color: white;
+    margin-top: 15px;
+}
+
+
+.lightTheme{
+    .review-container{
+        background-color: #fff;
+    }
+    .review-container h2{
+        color: black;
+    }
+    textarea{
+        background-color: #fff;
+        color: black;
+        border: 1px solid grey;
+    }
+    .grade-container p{
+        color: black;
+    }
+    #grade{
+        background-color: #fff;
+        color: black;
+    }
+    background-color: #ECF1FD;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFFreelancers | Оставьте отзыв</title>
+    <link rel="stylesheet" href="/stylesheets/sendReviews.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <% if (user && user.id) { %>
+        <script>
+            const idUser = "<%= user.id %>";
+        </script>
+    <% } %>
+</head>
+<body>
+<%- include('header.ejs') %>
+<main>
+    <div class="review-container">
+        <h2>Оставьте свой отзыв</h2>
+        <form action="/sendReviews/<%= user.id %>" method="POST" id="reviewForm">
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Ваш отзыв" maxlength="150" required></textarea>
+                <div class="grade-container">
+                    <p>Общая оценка:</p>
+                    <select name="grade" id="grade" required>
+                        <option value="1">1 - Ужасно</option>
+                        <option value="2">2 - Плохо</option>
+                        <option value="3">3 - Средне</option>
+                        <option value="4">4 - Хорошо</option>
+                        <option value="5">5 - Отлично</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" id="sendReview">Отправить</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

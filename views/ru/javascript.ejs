@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Готовые Сайты | javascript</title>
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <link rel="stylesheet" href="/stylesheets/websites.css">
+</head>
+<body>
+<%- include('header.ejs') %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<main>
+    <div>
+        <% if (advertising && advertising.length) { %>
+            <% if (advertising.length > 1) { %>
+                <a href="<%= advertising[0].link %>" target="_blank">
+                    <div class="advertising">
+                        <img src="data:image/png;base64,<%= advertising[0].image %>" class="adv-image">
+                    </div>
+                </a>
+            <% } else { %>
+                <% advertising.forEach(adv => { %>
+                    <a href="<%= adv.link %>" target="_blank">
+                        <div class="advertising">
+                            <img src="data:image/png;base64,<%= adv.image %>" class="adv-image">
+                        </div>
+                    </a>
+                <% }) %>
+            <% } %>
+        <% } else { %>
+            <div class="no-advertising">
+                <p class="center-advertising">Здесь может быть ваша реклама!</p>
+            </div>
+        <% } %>
+    </div>
+    <br>
+<!--    <h2 class="page-name">Javascript</h2>-->
+    <ul class="ul">
+        <% if (websites && websites.length) { %>
+            <% websites.forEach(sites => { %>
+                <li class="project">
+                    <img src="data:image/jpeg;base64,<%= sites.fileImg %>" class="img">
+                    <div class="sites-info">
+                        <p><%= sites.title %></p>
+                        <p>Тип: <%= sites.siteType %></p>
+                        <div style="display: flex; gap: 10px; margin: auto 0;">
+                            <button class="button fileInfo" data-info="<%= sites._id %>">Посмотреть</button>
+                            <div class="download" id="download" data-download="<%= sites._id %>">
+
+                            </div>
+                            <div>
+                                <img src="/images/love.png" class="love" id="love-<%= sites._id %>" data-id="<%= sites._id %>" data-title="<%= sites.title %>">
+                                <div id="load-<%= sites._id %>" hidden>
+                                    <div class="spinner center">
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                        <div class="spinner-blade"></div>
+                                    </div>
+                                </div>
+                                <img src="/images/alreadyLove.png" class="alreadyLove" id="alreadyLove-<%= sites._id %>" data-id="<%= sites._id %>" data-title="<%= sites.title %>">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <% }) %>
+        <% } else { %>
+                <p class="not-found">Ничего не найдено.</p>
+        <% } %>
+    </ul>
+    <%- include('../pagination.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%- include('footer.ejs') %>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ads = document.querySelectorAll('.center-advertising');
+
+        if (ads.length > 1) {
+            for (let i = 1; i < ads.length; i++) {
+                ads[i].style.display = 'none';
+            }
+        }
+    });
+</script>
+<script src="/javascripts/advertising.js"></script>
+<script src="/javascripts/love.js"></script>
+<script src="/javascripts/checkDownload.js"></script>
+<script src="/javascripts/alert.js"></script>
+</body>
+</html>

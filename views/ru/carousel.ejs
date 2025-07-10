@@ -1,0 +1,148 @@
+<style>
+    .card-container{
+        position: absolute;
+        top: 13%;
+        right: 10%;
+        display: block;
+        justify-content: center;
+        flex-wrap: wrap;
+        transform: translateY(-20px);
+        animation: fadeIn 0.5s forwards;
+    }
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .card {
+        position: relative;
+        width: 300px;
+        height: 250px;
+        /*background-color: #2a2b2f;*/
+        background: radial-gradient(circle, rgba(0, 174, 255, 0.1), rgba(0, 0, 0, 1));
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+        margin: 10px;
+    }
+
+    .card svg {
+        width: 48px;
+        fill: #333;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .card:hover {
+        transform: rotate(-5deg) scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        /*background-color: #fff;*/
+        background: radial-gradient(circle, rgba(10, 10, 35, 1), rgba(0, 0, 0, 1));
+        opacity: 0;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .card:hover .card__content {
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 1;
+    }
+
+    .card__title {
+        margin: 0;
+        font-size: 24px;
+        /*color: #333;*/
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .card__description {
+        margin: 10px 0 0;
+        font-size: 14px;
+        /*color: #777;*/
+        color: #f9f8e4;
+        line-height: 1.4;
+    }
+
+    .card:hover svg {
+        scale: 0;
+        transform: rotate(-45deg);
+    }
+    .item{
+        width: 200px;
+        height: 150px;
+    }
+    .item-pos{
+        margin-left: -45px;
+    }
+    .p{
+        color: white;
+        width: 200px;
+        flex-wrap: wrap;
+    }
+    .pos1{
+        margin-top: 50px;
+    }
+    .pos3{
+        margin-left: 200px;
+    }
+    @media (max-width: 1400px) {
+        .card-container{
+            display: none;
+        }
+    }
+</style>
+<div class="card-container">
+    <div style="display: flex">
+        <div class="card pos1">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="item-pos">
+                    <img src="images/front.jpg" class="item">
+                    <p class="p">Что такое Frontend разработка?</p>
+                </div>
+            </svg>
+            <div class="card__content">
+                <p class="card__title">Frontend разработка</p>
+                <p class="card__description">Frontend разработка занимается созданием пользовательского интерфейса (UI) веб-сайтов и веб-приложений. Это включает в себя разработку веб-дизайна, внедрение интерактивных элементов и оптимизацию производительности для лучшего пользовательского опыта.</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="item-pos">
+                    <img src="images/back.jpg" class="item">
+                    <p class="p">Что такое Backend разработка?</p>
+                </div>
+            </svg>
+            <div class="card__content">
+                <p class="card__title">Backend разработка</p>
+                <p class="card__description">Backend разработка занимается созданием серверной части веб-приложений и обеспечением их взаимодействия с базами данных. Это включает в себя разработку API, обработку запросов и обеспечение безопасности данных.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card pos3">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div class="item-pos">
+                <img src="images/fullstack.jpg" class="item">
+                <p class="p">Что такое Full-stack разработка?</p>
+            </div>
+        </svg>
+        <div class="card__content">
+            <p class="card__title">Fullstack разработка</p>
+            <p class="card__description">Fullstack разработка объединяет в себе как frontend, так и backend разработку. Это позволяет создавать комплексные веб-приложения, способные обрабатывать как клиентские запросы, так и взаимодействовать с базами данных и другими серверными ресурсами.</p>
+        </div>
+    </div>
+</div>

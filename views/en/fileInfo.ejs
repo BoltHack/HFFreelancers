@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website View | <%= siteInfo.title %></title>
+    <link rel="stylesheet" href="/stylesheets/fileInfo.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+</head>
+<script>
+    const infoId = `<%= siteInfo._id %>`
+    const infoImage = `<%= siteInfo.fileImg %>`
+    const infoTitle = `<%= siteInfo.title %>`
+</script>
+<body>
+<%- include('header.ejs') %>
+<main>
+    <div style="display: block">
+        <div class="info">
+            <h2>Information</h2>
+            <div style="display: flex;">
+                <img src="data:image/jpeg;base64,<%= siteInfo.fileImg %>" class="img" onclick="imageMenu()" title="Zoom in">
+                <div style="display: block; margin-left: 20px; margin-top: -40px;">
+                    <b>- Title:</b>
+                    <p><%= siteInfo.title %></p>
+                    <b>- Type:</b>
+                    <p><%= siteInfo.siteType %></p>
+                    <b>- Description:</b>
+                    <p class="description"><%= siteInfo.description %></p>
+                </div>
+                <div style="display: flex">
+                    <div style="display: block; margin-left: -300px; margin-top: -40px;">
+                        <b>- Looked :</b>
+                        <p><%= siteInfo.views %></p>
+                        <b>- Downloaded :</b>
+                        <p><%= siteInfo.saves %> downloads</p>
+                    </div>
+                    <div style="display: block; margin-left: 100px; margin-top: -40px;">
+                        <b>- Comments :</b>
+                        <% if (siteInfo.commentsNumber >= 1) {%>
+                            <p><%= siteInfo.commentsNumber %> comments</p>
+                        <%} else {%>
+                            <p>No comments</p>
+                        <%}%>
+                        <b>- Likes:</b>
+                        <p><%= siteInfo.likes %> likes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-container">
+        <div class="my-info">
+            <h2>My Information</h2>
+            <div style="display: flex; white-space: nowrap; gap: 5px;" id="my-details">
+                <div style="display: flex; white-space: nowrap; gap: 5px;">
+                    <a href="/auth/login" class="href">Log in</a>
+                    <p>or</p>
+                    <a href="/auth/register" class="href">register,</a>
+                    <p>to download your favorite websites.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-info">
+            <h2>Download Archive</h2>
+            <div class="download-file" id="download-file">
+            </div>
+        </div>
+    </div>
+    <div class="checkComments" id="checkComments" onclick="onCommentMenu()">
+        <img src="/images/comments.png">
+    </div>
+    <div class="comment-container" id="commentMenu" style="display: none">
+        <b class="close" onclick="offCommentMenu()">X</b>
+        <h3 style="text-align: center">User comments</h3>
+        <div class="comments">
+            <% if (siteInfo.comments.length > 0) { %>
+                <% siteInfo.comments.forEach(comment => { %>
+                    <div>
+                        <div style="display: flex">
+                            <img src="data:image/png;base64,<%= comment.avatar %>" style="border-radius: 50%; width: 50px; height: 50px; margin-top: 15px;">
+                            <h3 style="margin-left: 5px"><%= comment.author %></h3>
+                            <% if (new Date().getDate().toString().padStart(2, '0') === comment.date.day) {%>
+                                <p class="date">Today at <%= comment.date.day %>.<%= comment.date.month %></p>
+                            <%} else if (new Date().getDate().toString().padStart(2, '0') - comment.date.day === 1) {%>
+                                <p class="date">Yesterday at <%= comment.date.day %>.<%= comment.date.month %></p>
+                            <%} else {%>
+                                <p class="date"><%= comment.date.day %>.<%= comment.date.month %>.<%= comment.date.year %></p>
+                            <%}%>
+                            <p class="time"><%= comment.time %></p>
+                        </div>
+                        <p class="comment"><%= comment.message %></p>
+                        <br>
+                    </div>
+                <% }); %>
+            <% } else {%>
+                <p>No comments found.</p>
+            <%}%>
+        </div>
+        <div class="comment-form" id="commentForm">
+        </div>
+    </div>
+    <div class="br"></div>
+</main>
+<%- include('footer.ejs') %>
+<script src="/javascripts/advertising.js"></script>
+<script src="/javascripts/love.js"></script>
+<script src="/javascripts/fileInfo/fileInfoEN.js"></script>
+</body>
+</html>

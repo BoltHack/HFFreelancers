@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .ul {
+        list-style: none;
+        padding: 0;
+        margin: 30px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 1000px;
+        gap: 20px;
+    }
+
+    .project {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        width: 400px;
+        height: 200px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 10px auto;
+        transition: transform 0.2s;
+        overflow: hidden;
+    }
+
+    .img {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+        border: 2px solid #007bff;
+        margin-right: 20px;
+    }
+
+    .sites-info {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+
+
+
+
+    .button, .Download-button {
+        background: none;
+        color: #007bff;
+        border: 1px solid #007bff;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .button:hover, .Download-button:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .Download-button {
+        display: flex;
+        align-items: center;
+        background: rgb(103, 92, 156);
+        border: none;
+        padding: 8px 12px;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .Download-button svg {
+        margin-right: 8px;
+        width: 20px;
+    }
+
+    .Download-button:hover {
+        background-color: #5b3d8b;
+    }
+
+    .Download-button:active {
+        background-color: #4a2f6c;
+    }
+
+    .svgIcon path {
+        fill: white;
+    }
+    .delFile-button{
+        background: none;
+        color: darkred;
+        border: 1px solid darkred;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .delFile-button:hover{
+        color: white;
+        background-color: darkred;
+    }
+</style>
+<body>
+<%- include('adminHeader.ejs') %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<main>
+    <div style="text-align: center">
+        <a href="/admin/createAwebSite">Создать новый веб-сайт</a>
+    </div>
+    <ul class="ul">
+        <% if (websites && websites.length) { %>
+            <% websites.forEach(sites => { %>
+            <li class="project">
+                <img src="data:image/jpeg;base64,<%= sites.fileImg %>" class="img">
+                <div class="sites-info">
+                    <p>Название: <%= sites.title %></p>
+                    <p>Тип: <%= sites.siteType %></p>
+                    <div style="display: flex; gap: 10px; margin: auto 0;">
+                        <form action="/fileInfo/<%= sites._id %>" method="GET">
+                            <button class="button">Посмотреть</button>
+                        </form>
+                        <form action="/downloadFile/<%= sites._id %>" method="POST">
+                            <button class="Download-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512">
+                                    <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-167l80 80c9.4 9.4 24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-39 39V184c0-13.3-10.7-24-24-24s-24 10.7-24 24V318.1l-39-39c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z" fill="white"></path>
+                                </svg>
+                                <span>Скачать</span>
+                            </button>
+                        </form>
+                    </div>
+                    <br>
+                    <form action="/admin/deleteFile/<%= sites._id %>" method="POST">
+                        <button class="delFile-button">Удалить</button>
+                    </form>
+                </div>
+                <%})%>
+            </li>
+        <%} else {%>
+            <p>Лента сайтов пуста.</p>
+        <%}%>
+    </ul>
+    <%- include('../pagination.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</main>
+</body>
+</html>

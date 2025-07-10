@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlTheme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFFreelancers | You Are Banned</title>
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #212121;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: #16171d;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            color: #f3d5b5;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #adb5bd;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        .description{
+            color: #f1faee;
+        }
+        .description,
+        .banMessage {
+            word-wrap: break-word;
+            font-size: 1em;
+        }
+
+        #description,
+        #requestBanForm {
+            display: none;
+        }
+
+        .more-details {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container input, .container textarea{
+            background-color: #212121;
+            color: white;
+            border: 1px solid grey;
+        }
+
+        .animated-button {
+            position: relative;
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            font-size: 16px;
+            background-color: inherit;
+            border-radius: 100px;
+            font-weight: 600;
+            color: #2196F3;
+            box-shadow: 0 0 0 2px #ffffff20;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .animated-button span:last-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #2196F3;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .animated-button span:first-child {
+            position: relative;
+            z-index: 1;
+        }
+
+        .animated-button:hover {
+            box-shadow: 0 0 0 5px #2195f360;
+            color: #ffffff;
+        }
+
+        .animated-button:active {
+            scale: 0.95;
+        }
+
+        .animated-button:hover span:last-child {
+            width: 150px;
+            height: 150px;
+            opacity: 1;
+        }
+        :root{
+            --background-color: #1C2025;
+            --hover-background-color: #303740;
+            --color: #DAE2ED;
+            --padding: 8px;
+            --border-radius: 8px;
+            --title-content-space: 4px;
+        }
+        .dropdown{
+            width: 50px;
+            text-align: center;
+        }
+        .dropdown-title{
+            position: relative;
+            margin-bottom: var(--title-content-space);
+            background: none;
+        }
+        .dropdown-title::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: var(--title-content-space);
+            bottom: 0;
+            left: 0;
+            transform: translateY(100%);
+        }
+        .dropdown-title, .dropdown-content{
+            padding: var(--padding);
+            border-radius: var(--border-radius);
+            color: var(--color);
+            cursor: pointer;
+        }
+
+        .dropdown-title:hover + .dropdown-content, .dropdown-content:hover{
+            transform: scaleY(1);
+        }
+        .dropdown-content{
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.35s ease;
+            transform-origin: top;
+            transform: scaleY(0);
+        }
+        .dropdown-content a {
+            text-decoration: none;
+            padding: var(--padding);
+            color: var(--color);
+            border-radius: var(--border-radius);
+        }
+        b{
+            color: #f1faee;
+        }
+
+        .theme{
+            position: absolute;
+            top: 5%;
+            left: 1%;
+            transform: translate(0, -50%);
+        }
+
+        .switch {
+            font-size: 17px;
+            position: relative;
+            display: inline-block;
+            width: 3.5em;
+            height: 2em;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            --background: #1c1c23;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--background);
+            transition: .5s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 1.4em;
+            width: 1.4em;
+            border-radius: 50%;
+            left: 10%;
+            bottom: 15%;
+            box-shadow: inset 8px -4px 0px 0px #fff000;
+            background: var(--background);
+            transition: .5s;
+        }
+
+        input:checked + .slider {
+            background-color: #fff;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(100%);
+            box-shadow: inset 15px -4px 0px 15px #fff000;
+        }
+
+        .lightTheme{
+            .container{
+                background-color: #fff;
+            }
+            .container p{
+                color: black;
+            }
+            .container b{
+                color: #666;
+            }
+            .container h1{
+                color: #e74c3c;
+            }
+            .container input, .container textarea{
+                background-color: #fff;
+                color: black;
+                border: 1px solid white;
+            }
+            background-color: #ECF1FD;
+        }
+    </style>
+</head>
+
+<body>
+<div class="theme">
+    <label class="switch">
+        <input type="checkbox" id="theme">
+        <span class="slider"></span>
+    </label>
+</div>
+<div class="dropdown" id="local" style="position: absolute; top: 0; right: 1%;">
+    <div class="dropdown-title">
+        <img src="/images/english-flag.jpg" style="width: 40px; height: 40px;">
+    </div>
+    <div class="dropdown-content">
+        <button type="submit" style="background: none; border: none; padding: 0;" onclick="localsFRu()">
+            <img src="/images/russia-flag.png" style="width: 40px; height: 40px; cursor:pointer;">
+        </button>
+    </div>
+</div>
+<div class="container">
+    <h1>You Are Banned</h1>
+    <% if (getIp && matchingEntry) {%>
+        <p class="banMessage"><%= user.name %>, unfortunately, your IP address was blocked for the reason:
+            "<%= matchingEntry.reason %>".
+        </p>
+    <%} else {%>
+        <p class="banMessage"><%= user.name %>, unfortunately, your account has been banned for the following reason:
+            "<%= user.banned[0].reason %>".
+        </p>
+    <%}%>
+    <% if(user.banned[0].description) { %>
+        <div class="more-details">
+            <a id="more" onclick="moreDetails()">More details</a>
+        </div>
+        <div id="description" class="fade-in">
+            <b>More details</b><br>
+            <p class="description"><%= user.banned[0].description %></p>
+            <a id="close" onclick="closeAll()">Close</a>
+        </div>
+    <% } %>
+    <p id="requestMsg">You can submit an appeal request.</p>
+    <a id="requestBan" onclick="request()">Submit a request</a>
+    <div id="requestBanForm" class="fade-in">
+        <br>
+        <form action="/requestUnban/<%= user.id %>" method="POST">
+            <input type="email" name="email" placeholder="Your email" value="<%= user.email %>" readonly>
+            <textarea name="message" rows="4" placeholder="Why do you think you should be unbanned"
+                      maxlength="100" required></textarea>
+            <button type="submit">Submit request</button>
+            <a onclick="closeForm()">Close form</a>
+        </form>
+    </div>
+    <br>
+    <br>
+    <a href="/accessToken">
+        <button class="animated-button" onclick="localStorage.setItem('ref', 'refMain')">
+            <span>Reload</span>
+            <span></span>
+        </button>
+    </a>
+</div>
+
+<script>
+    const description = document.getElementById('description');
+    const more = document.getElementById('more');
+    const requestBan = document.getElementById('requestBan');
+    const requestBanForm = document.getElementById('requestBanForm');
+    const requestMsg = document.getElementById('requestMsg');
+
+    function moreDetails() {
+        description.style.display = 'block';
+        more.style.display = 'none';
+    }
+
+    function closeAll() {
+        description.style.display = 'none';
+        more.style.display = 'block';
+    }
+
+    function request() {
+        requestBanForm.style.display = 'block';
+        requestBan.style.display = 'none';
+        requestMsg.style.display = 'none';
+    }
+
+    function closeForm() {
+        requestBanForm.style.display = 'none';
+        requestMsg.style.display = 'block';
+        requestBan.style.display = 'block';
+    }
+</script>
+<script src="/javascripts/local.js"></script>
+<script src="/javascripts/theme.js"></script>
+</body>
+</html>

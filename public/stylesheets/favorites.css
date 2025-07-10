@@ -1,0 +1,309 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #212121;
+    /*color: #333;*/
+    margin: 0;
+    padding: 20px;
+}
+
+.ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    gap: 20px;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    background: #16171d;
+    border: 1px solid #313338;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    height: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    transition: transform 0.2s;
+    overflow: hidden;
+}
+
+.img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    border: 2px solid #007bff;
+    margin-right: 20px;
+    margin-top: -40px;
+}
+
+.sites-info {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sites-info p {
+    color: #fefae0;
+}
+
+.button, .Download-button {
+    background: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover, .Download-button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.Download-button {
+    display: flex;
+    align-items: center;
+    background: rgb(103, 92, 156);
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 5px;
+    position: relative;
+}
+
+.Download-button svg {
+    margin-right: 8px;
+    width: 20px;
+}
+
+.Download-button:hover {
+    background-color: #5b3d8b;
+}
+
+.Download-button:active {
+    background-color: #4a2f6c;
+}
+
+.advertising {
+    background-color: #212121;
+    width: 800px;
+    height: 85px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.no-advertising {
+    background-color: #16171d;
+    border: 1px solid #313338;
+    border-radius: 10px;
+    width: 800px;
+    height: 85px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.adv-image {
+    width: 800px;
+    height: 85px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+}
+
+.center-advertising {
+    text-align: center;
+    justify-content: center;
+    margin-top: 35px;
+    color: white;
+    z-index: 2;
+}
+
+.delete-favorites{
+    background: none;
+    color: #ffb3c1;
+    border: 1px solid #761c19;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.delete-favorites:hover{
+    background-color: #761c19;
+    color: white;
+}
+
+.spinner {
+    font-size: 22px;
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-top: 5px;
+}
+.not-found{
+    color: #f3d5b5;
+}
+.spinner .spinner-blade {
+    position: absolute;
+    left: 0.4629em;
+    bottom: 0;
+    width: 0.074em;
+    height: 0.2777em;
+    border-radius: 0.0555em;
+    background-color: transparent;
+    -webkit-transform-origin: center -0.2222em;
+    -ms-transform-origin: center -0.2222em;
+    transform-origin: center -0.2222em;
+    animation: spinner-fade9234 1s infinite linear;
+}
+
+.spinner .spinner-blade:nth-child(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.spinner .spinner-blade:nth-child(2) {
+    -webkit-animation-delay: 0.083s;
+    animation-delay: 0.083s;
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.spinner .spinner-blade:nth-child(3) {
+    -webkit-animation-delay: 0.166s;
+    animation-delay: 0.166s;
+    -webkit-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+.spinner .spinner-blade:nth-child(4) {
+    -webkit-animation-delay: 0.249s;
+    animation-delay: 0.249s;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.spinner .spinner-blade:nth-child(5) {
+    -webkit-animation-delay: 0.332s;
+    animation-delay: 0.332s;
+    -webkit-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    transform: rotate(120deg);
+}
+
+.spinner .spinner-blade:nth-child(6) {
+    -webkit-animation-delay: 0.415s;
+    animation-delay: 0.415s;
+    -webkit-transform: rotate(150deg);
+    -ms-transform: rotate(150deg);
+    transform: rotate(150deg);
+}
+
+.spinner .spinner-blade:nth-child(7) {
+    -webkit-animation-delay: 0.498s;
+    animation-delay: 0.498s;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.spinner .spinner-blade:nth-child(8) {
+    -webkit-animation-delay: 0.581s;
+    animation-delay: 0.581s;
+    -webkit-transform: rotate(210deg);
+    -ms-transform: rotate(210deg);
+    transform: rotate(210deg);
+}
+
+.spinner .spinner-blade:nth-child(9) {
+    -webkit-animation-delay: 0.664s;
+    animation-delay: 0.664s;
+    -webkit-transform: rotate(240deg);
+    -ms-transform: rotate(240deg);
+    transform: rotate(240deg);
+}
+
+.spinner .spinner-blade:nth-child(10) {
+    -webkit-animation-delay: 0.747s;
+    animation-delay: 0.747s;
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.spinner .spinner-blade:nth-child(11) {
+    -webkit-animation-delay: 0.83s;
+    animation-delay: 0.83s;
+    -webkit-transform: rotate(300deg);
+    -ms-transform: rotate(300deg);
+    transform: rotate(300deg);
+}
+
+.spinner .spinner-blade:nth-child(12) {
+    -webkit-animation-delay: 0.913s;
+    animation-delay: 0.913s;
+    -webkit-transform: rotate(330deg);
+    -ms-transform: rotate(330deg);
+    transform: rotate(330deg);
+}
+
+@keyframes spinner-fade9234 {
+    0% {
+        background-color: #69717d;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+.favorites{
+    color: #f3d5b5;
+    text-align: center;
+}
+.lightTheme{
+    .project{
+        background-color: #fff;
+        border: 1px solid #fff;
+    }
+    .sites-info p{
+        color: black;
+    }
+    .not-found{
+        color: black;
+    }
+    .delete-favorites{
+        color: darkred;
+    }
+    .no-advertising{
+        border: 1px solid black;
+        background-color: white;
+    }
+    .center-advertising{
+        color: #040505;
+    }
+    .favorites{
+        color: black;
+    }
+    .delete-favorites:hover{
+        background-color: #761c19;
+        color: white;
+    }
+    background-color: #ECF1FD;
+}

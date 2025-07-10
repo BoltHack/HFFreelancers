@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .ul {
+        list-style: none;
+        padding: 0;
+        margin: 30px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 1000px;
+        gap: 20px;
+    }
+
+    .project {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        width: 600px;
+        height: 200px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 10px auto;
+        transition: transform 0.2s;
+        overflow: hidden;
+    }
+
+    .img {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+        border: 2px solid #007bff;
+        margin-right: 20px;
+    }
+
+    .adv-info {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .svgIcon path {
+        fill: white;
+    }
+    .delFile-button{
+        background: none;
+        color: darkred;
+        border: 1px solid darkred;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .delFile-button:hover{
+        color: white;
+        background-color: darkred;
+    }
+</style>
+<body>
+<%- include('adminHeader.ejs') %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<main>
+    <div style="text-align: center">
+        <a href="/admin/createAdvertising">Выложить рекламу</a>
+    </div>
+    <ul class="ul">
+        <% if (advertising && advertising.length) { %>
+            <% advertising.forEach(adv => { %>
+            <li class="project">
+                <img src="data:image/jpeg;base64,<%= adv.image %>" class="img">
+                <div class="adv-info">
+                    <p>Название: <%= adv.title %></p>
+                    <p>Ссылка: <%= adv.link %></p>
+                    <p>Язык: <%= adv.locale %></p>
+                    <br>
+                    <form action="/admin/deleteAdvertising/<%= adv._id %>" method="POST">
+                        <button class="delFile-button">Удалить</button>
+                    </form>
+                </div>
+                <%})%>
+            </li>
+        <%} else {%>
+            <p>Лента рекламы пуста.</p>
+        <%}%>
+    </ul>
+</main>
+</body>
+</html>

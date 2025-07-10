@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFFreelancers | Leave a review</title>
+    <link rel="stylesheet" href="/stylesheets/sendReviews.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <% if (user && user.id) { %>
+        <script>
+            const idUser = "<%= user.id %>";
+        </script>
+    <% } %>
+
+</head>
+<body>
+<%- include('header.ejs') %>
+<main>
+    <div class="review-container">
+        <h2>Leave Your Review</h2>
+        <form action="/sendReviews/<%= user.id %>" method="POST" id="reviewForm">
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Your review" maxlength="150" required style="color: white"></textarea>
+                <div class="grade-container">
+                    <p>Overall rating:</p>
+                    <select name="grade" id="grade" required>
+                        <option value="1">1 - Terrible</option>
+                        <option value="2">2 - Bad</option>
+                        <option value="3">3 - Average</option>
+                        <option value="4">4 - Good</option>
+                        <option value="5">5 - Great</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" id="sendReview">Submit</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

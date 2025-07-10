@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlTheme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сессия истекла</title>
+    <link rel="stylesheet" href="/stylesheets/login-register.css">
+    <link rel="stylesheet" href="/stylesheets/alert.css">
+    <link rel="icon" type="image/png" href="/images/logo2.png">
+    <style>
+        .theme{
+            position: absolute;
+            top: 5%;
+            left: 1%;
+            transform: translate(0, -50%);
+        }
+
+        .switch {
+            font-size: 17px;
+            position: relative;
+            display: inline-block;
+            width: 3.5em;
+            height: 2em;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            --background: #1c1c23;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--background);
+            transition: .5s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 1.4em;
+            width: 1.4em;
+            border-radius: 50%;
+            left: 10%;
+            bottom: 15%;
+            box-shadow: inset 8px -4px 0px 0px #fff000;
+            background: var(--background);
+            transition: .5s;
+        }
+
+        input:checked + .slider {
+            background-color: #fff;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(100%);
+            box-shadow: inset 15px -4px 0px 15px #fff000;
+        }
+    </style>
+</head>
+<body>
+<div class="theme">
+    <label class="switch">
+        <input type="checkbox" id="theme">
+        <span class="slider"></span>
+    </label>
+</div>
+<form action="/auth/login" method="POST" id="loginForm">
+    <div class="card-container">
+        <div class="circle2"></div>
+        <div class="container">
+            <div class="log-card">
+                <div style="display: flex; gap: 10px; margin-left: -10px;">
+                    <a href="/" style="text-decoration: none"><h1>&#11013;</h1></a>
+                    <p class="heading">Session expired</p>
+                </div>
+                <p style="margin-top: -10px; text-align: center" class="expired-message">Your session has expired. Please log in again and select 'Remember Me' if you want to stay logged in.</p>
+
+                <div class="input-group">
+                    <p class="text">Email</p>
+                    <input class="input" type="email" name="email" id="email" placeholder="Send your email">
+                    <div class="password-container">
+                        <p class="text">Password</p>
+                        <input class="input" type="password" id="pwd" name="password" placeholder="Send your password">
+                        <img src="/images/invisiblePassword.png" class="toggle-password" style="top: 60%" id="togglePassword1">
+                        <img src="/images/visiblePassword.png" class="toggle-password" style="top: 60%" id="togglePassword2" hidden>
+                    </div>
+                </div>
+
+                <div class="password-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rememberMeCheckbox">
+                        <label class="remember-me" for="rememberMeCheckbox">Remember Me</label>
+                    </div>
+                    <a href="/auth/forget-password" class="forget-password">Forget password</a>
+                </div>
+
+                <button type="submit" class="btn" id="loginButton">Войти</button>
+
+                <span id="loginErr" style="text-align: center"></span>
+                <span id="correctJoin" style="text-align: center"></span>
+
+                <p class="no-account">Don't have an Account?<a href="/auth/register" class="link"> Sign up</a></p>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="/javascripts/auth/sessionLogin.js"></script>
+<script src="/javascripts/warning.js"></script>
+<script src="/javascripts/theme.js"></script>
+<script src="/javascripts/alert.js"></script>
+</body>
+</html>
